@@ -1,8 +1,8 @@
-###To run
+### To run
 
 ```npm install```
 
-###and then
+### and then
 
 ```npm install prisma --save-dev```
 

@@ -2,7 +2,6 @@
 
 ```npm install```
 
-<<<<<<< HEAD
 ```npm i express-session```
 
 ### and then
@@ -13,7 +12,6 @@
 
 ```npx prisma init```
 
-<<<<<<< HEAD
 progress: skeletal design okay na.
 To be progress:
 - Magnifier

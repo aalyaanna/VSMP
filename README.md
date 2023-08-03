@@ -1,8 +1,10 @@
-###To run
+### To run
 
 ```npm install```
 
-###and then
+```npm i express-session```
+
+### and then
 
 ```npm install prisma --save-dev```
 
@@ -10,4 +12,8 @@
 
 ```npx prisma init```
 
-still no progress for the design, folder pa lang ng project.
+progress: skeletal design okay na.
+To be progress:
+- Magnifier
+- Modes of Screen
+- Overall design

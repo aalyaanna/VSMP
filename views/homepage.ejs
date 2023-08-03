@@ -1,1 +1,53 @@
 <!-- Home page kung saan may create email button, magnifier, mode of screen and such-->
+
+<%- include('header') -%>
+
+<body>
+
+    <!--Navigation bar-->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">VSMP</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Magnifier</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Modes of Screen
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" value="default">Default</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" value="protanopia">Protanopia</a></li>
+                          <li><a class="dropdown-item" value="deuteranopia">Deuteranopia</a></li>
+                          <li><a class="dropdown-item" value="tritanopia">Tritanopia</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Body content-->
+    <section class="pt-5">
+        <div class="container border text-center py-5">
+            <div>
+                <h1 id="homepage_quote">Homepage</h1>
+                <div>
+                    <!-- Content will be changed kapag nasa katinuan na ko please-->
+                    <p class="paragraph_text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet facilisis magna etiam tempor orci eu lobortis. Aliquam sem fringilla ut morbi tincidunt. Urna nec tincidunt praesent semper feugiat nibh sed pulvinar. Pretium fusce id velit ut. Purus in massa tempor nec feugiat nisl. Diam volutpat commodo sed egestas egestas. Laoreet id donec ultrices tincidunt arcu non sodales neque. Augue lacus viverra vitae congue eu consequat ac felis donec. Dictum non consectetur a erat nam at. Ac tortor vitae purus faucibus ornare suspendisse. Tellus orci ac auctor augue mauris. Eu lobortis elementum nibh tellus molestie. Orci dapibus ultrices in iaculis nunc. Aliquam id diam maecenas ultricies mi eget mauris. Neque viverra justo nec ultrices. Praesent tristique magna sit amet. Eget nullam non nisi est sit. Pulvinar elementum integer enim neque volutpat ac. Sagittis orci a scelerisque purus semper eget duis at.
+                        <br>
+                        Turpis in eu mi bibendum neque. Euismod nisi porta lorem mollis aliquam. Posuere lorem ipsum dolor sit amet consectetur. Dictum non consectetur a erat. Amet venenatis urna cursus eget. Fames ac turpis egestas sed tempus urna et pharetra. Velit aliquet sagittis id consectetur. Adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus urna. Est ultricies integer quis auctor elit sed vulputate mi sit. Lacinia at quis risus sed vulputate. Lobortis mattis aliquam faucibus purus in. Eget gravida cum sociis natoque penatibus et magnis dis. Varius vel pharetra vel turpis nunc eget lorem. Ac turpis egestas integer eget aliquet nibh praesent. Pretium quam vulputate dignissim suspendisse in. Convallis a cras semper auctor neque vitae tempus quam pellentesque.
+                    </p>
+                </div>
+                <div>
+                    <a type="button" class="btn btn-primary mx-5" href="/email">Compose <br> Email</a>
+                    <button type="button" class="btn btn-primary mx-5">Activate Speech <br> Recognition</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

@@ -1,1 +1,59 @@
 <!-- Dito yung design for email-->
+
+<%- include('header') -%>
+
+<body>
+    <!--Navigation bar-->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">VSMP</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Magnifier</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Modes of Screen
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" value="default">Default</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" value="protanopia">Protanopia</a></li>
+                          <li><a class="dropdown-item" value="deuteranopia">Deuteranopia</a></li>
+                          <li><a class="dropdown-item" value="tritanopia">Tritanopia</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Body content for email-->
+    <section class="pt-5">
+        <div class="container border py-5">
+            <div class="mb-3">
+                <a type="button" class="btn btn-primary" href="/homepage"><i class="bi bi-caret-left-fill"></i>  Back</a>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">To</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Body</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary">Attach Files</button>
+            </div>
+            <div class="text-center">
+                <button type="button" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </section>
+
+</body>

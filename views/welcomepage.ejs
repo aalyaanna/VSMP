@@ -1,16 +1,26 @@
-<!-- Dito yung design para don sa magtatype ng gmail nila or yung magic link natin-->
+<!-- Dito yung design para don sa magtatype ng gmail nila or yung magic link natin
+    if may naiisip pa kayong design, palagay na lang T T-->
 
 <%- include('header') -%>
 
 <body>
     <!--Navigation bar-->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">VSMP</a>
+            <a class="navbar-brand" href="#">VSMP</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="#about">about</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">contact us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#gmailModal">gmail</a>
@@ -20,20 +30,162 @@
         </div>
     </nav>
 
-    <!-- welcome quote content-->
-    <div class="container">
-        <h1 class="text-center" id="welcome_quote">Building a user-friendly website to bridge the gap to the visually impaired</h1>
-    </div>
-
-    <!-- Main content, explanation on what is the purpose of the website-->
-    <section id="about">
-        <div class="container">
-            <h6>What is VSMP?</h6>
+    <!-- welcome quote content, pwede nyo palitan if di nyo bet ehehe-->
+    <section class="welcome-banner">
+        <div class="container quote-padding">
+            <h1 class="text-center" id="welcome_quote">Building a user-friendly website to bridge the gap to the visually impaired</h1>
         </div>
     </section>
 
+    <!-- Main content, explanation on what is the purpose of the website-->
+    <section class="about section-padding" id="about">
+        <div class="container">
+            <div class="about-text">
+                <h2>What is VSMP?</h2>
+                <!-- Papalitan to ng full explanation about the website, for now lorem muna-->
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, labore reiciendis. Assumenda eos quod animi! Soluta nesciunt inventore dolores excepturi provident, culpa beatae tempora, explicabo corporis quibusdam corrupti. Autem, quaerat. Assumenda quo aliquam vel, nostrum explicabo ipsum dolor, ipsa perferendis porro doloribus obcaecati placeat natus iste odio est non earum?</p>
+            </div>
 
-    <!-- Modal for the gmail link -->
+            <div class="about-text">
+                <h2>How does Gmail Link works?</h2>
+                <!-- Papalitan to ng full explanation kung pano nila makukuha link, preferrable if step by step, for now lorem muna-->
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, labore reiciendis. Assumenda eos quod animi! Soluta nesciunt inventore dolores excepturi provident, culpa beatae tempora, explicabo corporis quibusdam corrupti. Autem, quaerat. Assumenda quo aliquam vel, nostrum explicabo ipsum dolor, ipsa perferendis porro doloribus obcaecati placeat natus iste odio est non earum?</p>
+                <p>Step by step </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services na inooffer ng website.-->
+    <section class="services section-padding" id="services">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-header text-center pb-3">
+						<h2>VSMP Services</h2>
+                        <!-- Explanation ulit ng inooffer natin -->
+						<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, quo.</h4>
+					</div>
+				</div>
+			</div>
+            <!-- Explanation per magnifier, modes, and speech recog -->
+			<div class="row">
+				<div class="col-12 col-md-12 col-lg-4">
+					<div class="card text-center pb-2">
+						<div class="card-body">
+							<i class="bi bi-search"></i>
+							<h3 class="card-title">Magnifier</h3>
+							<p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi modi temporibus alias iste. Accusantium?</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-12 col-lg-4">
+					<div class="card text-center pb-2">
+						<div class="card-body">
+							<i class="bi bi-menu-button-wide-fill"></i>
+							<h3 class="card-title">Modes of Screen</h3>
+							<p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi modi temporibus alias iste. Accusantium?</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-12 col-lg-4">
+					<div class="card text-center pb-2">
+						<div class="card-body">
+							<i class="bi bi-soundwave"></i>
+							<h3 class="card-title">Speech Recognition</h3>
+							<p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi modi temporibus alias iste. Accusantium?</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <!-- FAQ for them, tas lagyan na lang ng mga questions na sa tingin natin matatanong nila (e.g. saan makikita yung magic link?)-->
+    <section class="faq section-padding" id="faq">
+        <div class="container">
+            <div class="row">
+				<div class="col-md-12">
+					<div class="section-header text-center">
+						<h2>Frequently Asked Questions</h2>
+					</div>
+				</div>
+			</div>
+            <div class="row">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                <div class="circle-icon"><i class="bi bi-question-lg"></i></div>
+                                <span>Question sample #1</span>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Placeholder content</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                <div class="circle-icon"><i class="bi bi-question-lg"></i></div>
+                                <span>Question sample #2</span>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Placeholder content</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                <div class="circle-icon"><i class="bi bi-question-lg"></i></div>
+                                <span>Question sample #3</span>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Placeholder content</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- I think need natin mag add, if ever lang na may suggestions sila na iadd ganon? -->
+    <section class="contact section-padding" id="contact">
+		<div class="container mt-5 mb-5">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-header text-center pb-2">
+						<h2>Contact Us</h2>
+						<h5>If you have any queries, questions and suggestions, you can send it to us!<br>
+                            Please fill up the contact form for us to see your concerns.</h5>
+					</div>
+				</div>
+			</div>
+			<div class="row m-0 contact-form">
+				<div class="col-md-12 p-0 pt-4">
+					<div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Your full name</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Your Gmail address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Your Queries here</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+				</div>
+			</div>
+            <div class="text-center">
+                <button type="button" class="btn btn-lg">Send</button>
+            </div>
+		</div>
+	</section>
+
+
+    <!-- Modal for the gmail link authentication,,, dito po sha opo -->
     <div class="modal fade" id="gmailModal" tabindex="-1" aria-labelledby="gmailModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -57,9 +209,28 @@
         </div>
     </div>
 
-<!-- Add the following lines to include jQuery -->
+<%- include('footer') -%>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!-- Add the following lines to include Bootstrap 5 JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- Para ito sa pop-up modal kapag nagsscroll, one time lang to, kapag bagong bukas yung website -->
+<script>
+    $(document).ready(function() {
+        const scrollThreshold = 0.2 * $(document).height();
+        function showModal() {
+            $('#gmailModal').modal('show');
+            $(window).off('scroll', checkScroll);
+        }
+        function checkScroll() {
+            if ($(window).scrollTop() >= scrollThreshold) {
+                showModal();
+            }
+        }
+        $(window).on('scroll', checkScroll);
+    });
+</script>
+
 
 </body>

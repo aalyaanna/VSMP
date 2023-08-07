@@ -1,0 +1,40 @@
+.email_padding {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.email_custom label {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.email_custom input {
+    font-size: larger;
+    border-color: black;
+}
+
+.email_custom textarea {
+    border-color: black;
+}
+
+.email_custom a {
+    background-color: #233169;
+    color: white;
+    font-size: large;
+}
+
+.email_custom a:hover {
+    background-color: #7FB3D5;
+    color: black;
+}
+
+.email_custom button {
+    background-color: #233169;
+    color: white;
+    font-size: large;
+}
+
+.email_custom button:hover {
+    background-color: #7FB3D5;
+    color: black;
+}

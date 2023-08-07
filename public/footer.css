@@ -1,0 +1,18 @@
+.footer-custom {
+    background-color: #EBF5FB;
+    color: #233169;
+    font-size: larger;
+}
+
+.footer-custom i {
+    color: #233169;
+}
+
+.copyright-custom {
+    background-color: #233169;
+    color: #EBF5FB;
+}
+
+.footer-title {
+    font-weight: bolder;
+}

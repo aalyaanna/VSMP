@@ -3,8 +3,37 @@
 #homepage_quote {
     color: #233169;
     font-weight: bolder;
+    padding-bottom: 20px;
+}
+
+.home_padding {
+    padding-top: 100px;
+    padding-bottom: 50px;
 }
 
 .paragraph_text {
+    font-size: large;
     text-align: justify;
+}
+
+.homepage_btn a {
+    background-color: #233169;
+    color: white;
+    font-size: large;
+}
+
+.homepage_btn button {
+    background-color: #233169;
+    color: white;
+    font-size: large;
+}
+
+.homepage_btn a:hover {
+    background-color: #7FB3D5;
+    color: black;
+}
+
+.homepage_btn button:hover {
+    background-color: #7FB3D5;
+    color: black;
 }

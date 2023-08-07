@@ -1,13 +1,14 @@
-<!-- Home page kung saan may create email button, magnifier, mode of screen and such-->
+<!-- Home page kung saan may create email button, magnifier, mode of screen and such
+    if may naiisip pa kayong design pls pu padagdag na lang ehe, may mga comments naman if nalilito kayo <3-->
 
 <%- include('header') -%>
 
 <body>
 
     <!--Navigation bar-->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">VSMP</a>
+            <a class="navbar-brand" href="#">VSMP</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -18,11 +19,12 @@
                           Modes of Screen
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" value="default">Default</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" value="protanopia">Protanopia</a></li>
-                          <li><a class="dropdown-item" value="deuteranopia">Deuteranopia</a></li>
-                          <li><a class="dropdown-item" value="tritanopia">Tritanopia</a></li>
+                            <li><a class="dropdown-item" value="default">Default</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" value="Deuteranomaly">Deuteranomaly</a></li>
+                            <li><a class="dropdown-item" value="Protanomaly">Protanomaly</a></li>
+                            <li><a class="dropdown-item" value="Tritanomaly">Tritanomaly</a></li>
+                            <li><a class="dropdown-item" value="Tritanopia">Tritanopia</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -31,23 +33,26 @@
     </nav>
 
     <!-- Body content-->
-    <section class="pt-5">
-        <div class="container border text-center py-5">
-            <div>
+    <section class="home_padding">
+        <div class="container border border-black rounded text-center py-5">
+            <div class="m-3">
                 <h1 id="homepage_quote">Homepage</h1>
                 <div>
-                    <!-- Content will be changed kapag nasa katinuan na ko please-->
+                    <!-- Content will be changed kapag nasa katinuan na ko please, as much as possible explanation kung pano gamitin-->
                     <p class="paragraph_text">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet facilisis magna etiam tempor orci eu lobortis. Aliquam sem fringilla ut morbi tincidunt. Urna nec tincidunt praesent semper feugiat nibh sed pulvinar. Pretium fusce id velit ut. Purus in massa tempor nec feugiat nisl. Diam volutpat commodo sed egestas egestas. Laoreet id donec ultrices tincidunt arcu non sodales neque. Augue lacus viverra vitae congue eu consequat ac felis donec. Dictum non consectetur a erat nam at. Ac tortor vitae purus faucibus ornare suspendisse. Tellus orci ac auctor augue mauris. Eu lobortis elementum nibh tellus molestie. Orci dapibus ultrices in iaculis nunc. Aliquam id diam maecenas ultricies mi eget mauris. Neque viverra justo nec ultrices. Praesent tristique magna sit amet. Eget nullam non nisi est sit. Pulvinar elementum integer enim neque volutpat ac. Sagittis orci a scelerisque purus semper eget duis at.
                         <br>
                         Turpis in eu mi bibendum neque. Euismod nisi porta lorem mollis aliquam. Posuere lorem ipsum dolor sit amet consectetur. Dictum non consectetur a erat. Amet venenatis urna cursus eget. Fames ac turpis egestas sed tempus urna et pharetra. Velit aliquet sagittis id consectetur. Adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus urna. Est ultricies integer quis auctor elit sed vulputate mi sit. Lacinia at quis risus sed vulputate. Lobortis mattis aliquam faucibus purus in. Eget gravida cum sociis natoque penatibus et magnis dis. Varius vel pharetra vel turpis nunc eget lorem. Ac turpis egestas integer eget aliquet nibh praesent. Pretium quam vulputate dignissim suspendisse in. Convallis a cras semper auctor neque vitae tempus quam pellentesque.
                     </p>
                 </div>
-                <div>
+                <div class="homepage_btn">
                     <a type="button" class="btn btn-primary mx-5" href="/email">Compose <br> Email</a>
                     <button type="button" class="btn btn-primary mx-5">Activate Speech <br> Recognition</button>
                 </div>
             </div>
         </div>
     </section>
+
+    <%- include('footer') -%>
+
 </body>

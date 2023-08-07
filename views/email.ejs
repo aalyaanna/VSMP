@@ -1,4 +1,5 @@
-<!-- Dito yung design for email-->
+<!-- Dito yung design for email
+    if may naiisip pa kayong design huhu kayo na to T T-->
 
 <%- include('header') -%>
 
@@ -6,7 +7,7 @@
     <!--Navigation bar-->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">VSMP</a>
+            <a class="navbar-brand" href="#">VSMP</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -17,11 +18,12 @@
                           Modes of Screen
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" value="default">Default</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" value="protanopia">Protanopia</a></li>
-                          <li><a class="dropdown-item" value="deuteranopia">Deuteranopia</a></li>
-                          <li><a class="dropdown-item" value="tritanopia">Tritanopia</a></li>
+                            <li><a class="dropdown-item" value="default">Default</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" value="Deuteranomaly">Deuteranomaly</a></li>
+                            <li><a class="dropdown-item" value="Protanomaly">Protanomaly</a></li>
+                            <li><a class="dropdown-item" value="Tritanomaly">Tritanomaly</a></li>
+                            <li><a class="dropdown-item" value="Tritanopia">Tritanopia</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -30,30 +32,34 @@
     </nav>
 
     <!-- Body content for email-->
-    <section class="pt-5">
-        <div class="container border py-5">
-            <div class="mb-3">
-                <a type="button" class="btn btn-primary" href="/homepage"><i class="bi bi-caret-left-fill"></i>  Back</a>
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">To</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Subject</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Body</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <div>
-                <button type="button" class="btn btn-primary">Attach Files</button>
-            </div>
-            <div class="text-center">
-                <button type="button" class="btn btn-primary">Send</button>
+    <section class="email_padding">
+        <div class="container border border-black rounded email_custom py-5">
+            <div class="m-3">
+                <div class="mb-3">
+                    <a type="button" class="btn btn-primary" href="/homepage"><i class="bi bi-caret-left-fill"></i>  Back</a>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">To</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Subject</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Body</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-lg"><i class="bi bi-folder-plus"></i>&nbsp;&nbsp;&nbsp;Attach Files</button>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-lg">Send</button>
+                </div>
             </div>
         </div>
     </section>
+
+    <%- include('footer') -%>
 
 </body>

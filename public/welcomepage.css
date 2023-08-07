@@ -2,4 +2,106 @@
 
 #welcome_quote{
     color: #233169;
+    font-weight: bolder;
+}
+
+.welcome-banner {
+    background-color: #EBF5FB;
+}
+
+.quote-padding {
+    padding: 200px 0;
+}
+
+.section-padding {
+	padding-top: 70px;
+}
+
+.section-padding h2 {
+    font-weight: bolder;
+}
+
+.about-text {
+    padding-top: 20px;
+}
+
+.about-text p {
+    font-size: larger;
+}
+
+.card {
+    background-color: #7FB3D5;
+    color: black;
+    margin-bottom: 30px;
+}
+
+.services .card-body i {
+	font-size: 50px;
+}
+
+.accordion-button{
+    margin-bottom: 10px;
+}
+.accordion-body {
+    margin-top: 15px;
+    padding: 25px;
+    background: #EBF5FB;
+    border-radius: 5px;
+    box-shadow: 0 2px 25px -3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    font-size: larger;
+}
+
+.accordion-item{
+    border: 0px;
+}
+
+.accordion-item span {
+    font-size: larger;
+}
+
+.accordion-button:not(.collapsed){
+    border: 0px;
+    color: #7FB3D5;
+    background-color: #ffffff;
+    box-shadow: inset 0 0px 0 rgb(0 0 0 / 13%);
+}
+
+.circle-icon {
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #233169;
+    border: 5px solid #233169;
+    color: #fff;
+    margin-left: -20px;
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+.contact-form label {
+    font-size: larger;
+}
+
+.contact-form input {
+    border-color: black;
+    font-size: larger;
+}
+
+.contact-form textarea {
+    border-color: black;
+    font-size: larger;
+}
+
+.contact button {
+    background-color: #233169;
+    color: white;
+}
+
+.contact button:hover {
+    background-color: #7FB3D5;
+    color: black;
 }

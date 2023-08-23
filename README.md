@@ -14,6 +14,6 @@
 
 progress: skeletal design okay na.
 To be progress:
-- Magnifier
+- Magnifier (WORKING NA)
 - Modes of Screen
 - Overall design

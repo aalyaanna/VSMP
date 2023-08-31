@@ -3,14 +3,13 @@
 ###
 ```npm i express-session```
 
-### And install these packages,
+### Install these packages,
 ``` npm i uuid ```
 ###
 ``` npm i nodemailer ```
 ###
 ``` npm i ejs ```
-
-### and then
+### 
 ```npm install prisma --save-dev```
 ###
 ```npx prisma```

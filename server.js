@@ -19,7 +19,7 @@ const transport = nodemailer.createTransport({
     auth:{
         type:'OAuth2',
         user: 'oshisoffline@gmail.com',
-        accessToken: 'ya29.a0AfB_byBRYlKmXeLGCxLQhJNEDoq69bG6r-EzsM1RywFpaYwh4DX0r3KwkoJ_I4J6CbWyXc_FtjrCoohdjO6eNY1Mux2qELYb-Cwl103XijPiU3a2xxeiX-w3zwkLTNXsWiIKHDenuz-Jy5A4E39_yqirELB-elckyYZ0cAaCgYKAVMSARISFQHsvYlsYA2obM2Gixz7LtDnsuHs4A0173'
+        accessToken: 'ya29.a0AfB_byDTNS3Mj3hkYfrcyIwA29p5nCLXBatSBS9U6rezAnr73s9axDYJR1McGBnJCzJ1zlVGv6Ti53FTbrZxkVNUil-qp4bX5h8zvhw6txFH0Xo0kMVL9h0--jgWU4ebmgDc85L18BcvC0fe005wudTSb75KREXs6Gp5MgaCgYKAfwSARISFQHsvYlsSDlKtjxdB5Mvn2M4fR-sUw0173'
     }
 })
 
@@ -27,11 +27,19 @@ const transport = nodemailer.createTransport({
 //you can add your email, just change the id number
 const users = [
     {
-        id:1,email:'allanaubaldo01@gmail.com',magicCode:null
+        id:1,email:'acernliya@gmail.com',magicCode:null
 
     },
     {
-        id:2,email:'acernliya@gmail.com',magicCode:null
+        id:2,email:'mlaoseo@tip.edu.ph',magicCode:null
+        
+    },
+    {
+        id:2,email:'magrubaldo@tip.edu.ph',magicCode:null
+        
+    },
+    {
+        id:2,email:'maesanjose@tip.edu.ph',magicCode:null
         
     }
 ]
@@ -55,12 +63,14 @@ app.get('/', (req, res) =>{
 app.post('/login',async (req,res) => {
     const {email} = req.body
     const user = users.find((u) => u.email === email)
+
     if(!user){
         return res.send("User not found!")
     }
 
     const magicCode = uuid.v4().substr(0,8)
     user.magicCode = magicCode
+
     const mailOptions = {
         from:'vsmpofficial@gmail.com',
         to:email,

@@ -2,13 +2,13 @@
 ```npm install```
 ###
 ```npm i express-session```
+###
+``` npm i ejs ```
 
 ### Install these packages,
 ``` npm i uuid ```
 ###
 ``` npm i nodemailer ```
-###
-``` npm i ejs ```
 ### 
 ```npm install prisma --save-dev```
 ###

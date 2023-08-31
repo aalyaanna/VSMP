@@ -198,11 +198,11 @@
                     <p>Please type your Gmail account to go to our main website.</p>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Gmail account</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com">
+                        <input type="email" id="email" name="email" class="form-control" placeholder="example@gmail.com">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Send</button>
+                    <button type="button" onlick="sendMagicLink()" class="btn btn-secondary" data-bs-dismiss="modal">Send</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -217,6 +217,20 @@
 
 <!-- Para ito sa pop-up modal kapag nagsscroll, one time lang to, kapag bagong bukas yung website -->
 <script>
+
+async function sendMagicLink(){
+            const email = document.getElementById('email').value;
+            const response = await fetch('/login', {
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({email})
+            })
+            const result = await response.text()
+            alert(result)
+}
+
     $(document).ready(function() {
         const scrollThreshold = 0.2 * $(document).height();
         function showModal() {

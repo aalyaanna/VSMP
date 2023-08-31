@@ -1,4 +1,4 @@
-### To run
+### To run, open terminal and type
 ```npm install```
 ###
 ```npm i express-session```

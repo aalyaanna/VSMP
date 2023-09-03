@@ -42,8 +42,11 @@ PROGRESS:
 - Email Functions
 
     a. Sending
+  
     b. Attaching File
+  
     c. Speech-to-Text
+  
     d. Voice Commands
 
 - Overall Design

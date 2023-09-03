@@ -31,6 +31,7 @@
 ### Click the Authorize APIs button, make sure to use the gmail account you provided on the user, 
 ### Click the Exchange Authorization Code for Tokens,
 ### In the Request/Response window, go to the "access_token" then copy the provided/generated key then paste it on the accessToken.
+### Note that the access token from OAuth is only accessible for 1hr, after 1hr you have to generate another access token.
 
 progress: skeletal design okay na.
 To be progress:

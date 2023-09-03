@@ -39,14 +39,11 @@ PROGRESS:
 
 - Magic Auth Link (WORKING)
 - Email Layout (DONE)
-- Email Function
+- Email Functions
 
-    Sending
-
-    Attaching File
-
-    Speech-to-Text
-
-    Voice Commands
+    a. Sending
+    b. Attaching File
+    c. Speech-to-Text
+    d. Voice Commands
 
 - Overall Design

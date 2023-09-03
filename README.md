@@ -16,7 +16,7 @@
 ###
 ```npx prisma init```
 
-### For this part in index.js, change the access token with the one provided by the OAuth you generated
+### For this part in server.js, change the access token with the one provided by the OAuth you generated
     const transport = nodemailer.createTransport({
     service:'gmail',
     auth:{

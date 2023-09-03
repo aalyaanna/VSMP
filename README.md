@@ -10,7 +10,7 @@
 ###
 ``` npm i nodemailer ```
 ### 
-```npm install prisma --save-dev```
+```npm i prisma --save-dev```
 ###
 ```npx prisma```
 ###

@@ -33,8 +33,16 @@
 ### In the Request/Response window, go to the "access_token" then copy the provided/generated key then paste it on the accessToken.
 ### Note that the access token from OAuth is only accessible for 1hr, after 1hr you have to generate another access token.
 
-progress: skeletal design okay na.
-To be progress:
-- Magnifier (WORKING NA)
+PROGRESS:
+- Magnifier (WORKING)
 - Modes of Screen
-- Overall design
+
+- Magic Auth Link (WORKING)
+- Email Layout (DONE)
+- Email Functions
+  Sending
+  Attaching File
+  Speech-to-Text
+  Voice Commands
+
+- Overall Design

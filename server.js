@@ -19,7 +19,7 @@ const transport = nodemailer.createTransport({
     auth:{
         type:'OAuth2',
         user: 'soundsendofficial@gmail.com',
-        accessToken: 'ya29.a0AfB_byBm9FpyYJ86DuKAGlzvYQUp1LpazGDbd2tIhETNrgkPyO6AjpwgYckpr2SIL95eOGyF-_GrvIzWJEO1tFHn-hvP654QUu2Cw0_BHYP4Xz6Z31WfTVi8qKgDYyY6TjIKqJZ_W1hDrYS0myAZL2seOnsUk3YdNS7SfgaCgYKAVISARESFQHsvYlsG0iuDd3_MXhOBQGjI5qhNg0173'
+        accessToken: 'ya29.a0AfB_byAoyCHTVU5h-vy358guj9YRY1XJqLqoKpmRkdiOEu-iZPEzaITSQK4jka_gpdnZqZztJ4H__mVDU-GpiPiDcZ3W_zEzTG5TFIymd-8T51hcmDjvVuWnZNNYcqPUl91asWC-MFcI3f5_hQoxISQ-v9SI0AP0OeS83gaCgYKAbMSARESFQHsvYlsowRNNY8bRLr1wmn70BK_AQ0173'
     }
 })
 
@@ -31,8 +31,7 @@ const transporter = nodemailer.createTransport({
     }
 })
 
-//for this part, as of now naka-indicate muna 'yong emails kung saan s-send 'yong email na may magic link solely for testing, but i will edit this
-//you can add your email, just change the id number
+//for this part, nakaindicate muna 'yong gmail accounts na se-send-an, will edit this to dynamic
 const users = [
     {
         id:1,email:'oshisoffline@gmail.com',magicCode:null
@@ -68,6 +67,7 @@ app.get('/', (req, res) =>{
     res.render('welcomepage', { title : "SoundSend"});
 })
 
+// sending magic authentication link
 app.post('/login',async (req,res) => {
     const {email} = req.body
     const user = users.find((u) => u.email === email)
@@ -112,11 +112,12 @@ app.get('/homepage',(req,res) => {
     res.redirect('/')
 });
 
+// sending emails, to be edit, gagawing dynamic 'yong userEmailAddress
 app.post('/send-email', async (req, res) => {
     const { userEmailAddress, recipientEmailAddress, subjectEmail, bodyEmail } = req.body;
   
     const mailOptions = {
-      from: userEmailAddress,
+      from: 'soundsendofficial@gmail.com',
       to: recipientEmailAddress,
       subject: subjectEmail,
       text: bodyEmail,

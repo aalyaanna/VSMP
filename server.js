@@ -18,8 +18,16 @@ const transport = nodemailer.createTransport({
     service:'gmail',
     auth:{
         type:'OAuth2',
-        user: 'oshisoffline@gmail.com',
-        accessToken: 'ya29.a0AfB_byDTNS3Mj3hkYfrcyIwA29p5nCLXBatSBS9U6rezAnr73s9axDYJR1McGBnJCzJ1zlVGv6Ti53FTbrZxkVNUil-qp4bX5h8zvhw6txFH0Xo0kMVL9h0--jgWU4ebmgDc85L18BcvC0fe005wudTSb75KREXs6Gp5MgaCgYKAfwSARISFQHsvYlsSDlKtjxdB5Mvn2M4fR-sUw0173'
+        user: 'soundsendofficial@gmail.com',
+        accessToken: 'ya29.a0AfB_byBm9FpyYJ86DuKAGlzvYQUp1LpazGDbd2tIhETNrgkPyO6AjpwgYckpr2SIL95eOGyF-_GrvIzWJEO1tFHn-hvP654QUu2Cw0_BHYP4Xz6Z31WfTVi8qKgDYyY6TjIKqJZ_W1hDrYS0myAZL2seOnsUk3YdNS7SfgaCgYKAVISARESFQHsvYlsG0iuDd3_MXhOBQGjI5qhNg0173'
+    }
+})
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user:'soundsendofficial@gmail.com',
+        pass:'qpiwuiimdiosyzck'
     }
 })
 
@@ -27,7 +35,7 @@ const transport = nodemailer.createTransport({
 //you can add your email, just change the id number
 const users = [
     {
-        id:1,email:'acernliya@gmail.com',magicCode:null
+        id:1,email:'oshisoffline@gmail.com',magicCode:null
 
     },
     {
@@ -35,11 +43,11 @@ const users = [
         
     },
     {
-        id:2,email:'magrubaldo@tip.edu.ph',magicCode:null
+        id:3,email:'magrubaldo@tip.edu.ph',magicCode:null
         
     },
     {
-        id:2,email:'maesanjose@tip.edu.ph',magicCode:null
+        id:4,email:'maesanjose@tip.edu.ph',magicCode:null
         
     }
 ]
@@ -57,7 +65,7 @@ app.use('/', router);
 
 // base route
 app.get('/', (req, res) =>{
-    res.render('welcomepage', { title : "VSMP"});
+    res.render('welcomepage', { title : "SoundSend"});
 })
 
 app.post('/login',async (req,res) => {
@@ -102,6 +110,27 @@ app.get('/homepage',(req,res) => {
 
     user.magicCode = null;
     res.redirect('/')
+});
+
+app.post('/send-email', async (req, res) => {
+    const { userEmailAddress, recipientEmailAddress, subjectEmail, bodyEmail } = req.body;
+  
+    const mailOptions = {
+      from: userEmailAddress,
+      to: recipientEmailAddress,
+      subject: subjectEmail,
+      text: bodyEmail,
+    };
+  
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error(error);
+          res.status(500).json({ status: 'error', message: 'Error sending email' });
+        } else {
+          console.log('Email sent: ' + info.response);
+          res.status(200).json({ status: 'success', message: 'Email sent successfully!' });
+        }
+    });
 });
 
 app.listen(port, ()=>{ console.log("Listening to the server on http://localhost:3000")});

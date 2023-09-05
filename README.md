@@ -35,7 +35,7 @@
 ### Click the first link that appears, which is the ``` https://mail.google.com/ ```
 ### Click the Authorize APIs button, make sure to use the ``` soundsendofficial@gmail.com ``` account, 
 ### Click the Exchange Authorization Code for Tokens,
-### In the Request/Response window, go to "access_token" then copy the provided/generated key and paste it on the accessToken.
+### In the Request/Response window, go to "access_token" at the bottom then copy the provided/generated key and paste it on the accessToken.
 ### Note that the access token from OAuth is only accessible for 1hr, after 1hr you have to generate another access token.
 
 PROGRESS:

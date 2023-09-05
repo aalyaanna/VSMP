@@ -7,7 +7,7 @@
     <!--Navigation bar-->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">VSMP</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+            <a class="navbar-brand" href="#">SoundSend</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -41,7 +41,7 @@
     <section class="about section-padding" id="about">
         <div class="container">
             <div class="about-text">
-                <h2>What is VSMP?</h2>
+                <h2>What is SoundSend?</h2>
                 <!-- Papalitan to ng full explanation about the website, for now lorem muna-->
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, labore reiciendis. Assumenda eos quod animi! Soluta nesciunt inventore dolores excepturi provident, culpa beatae tempora, explicabo corporis quibusdam corrupti. Autem, quaerat. Assumenda quo aliquam vel, nostrum explicabo ipsum dolor, ipsa perferendis porro doloribus obcaecati placeat natus iste odio est non earum?</p>
             </div>
@@ -61,7 +61,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="section-header text-center pb-3">
-						<h2>VSMP Services</h2>
+						<h2>SoundSend Services</h2>
                         <!-- Explanation ulit ng inooffer natin -->
 						<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, quo.</h4>
 					</div>
@@ -197,12 +197,12 @@
                     <!-- Please palagyan ng explanation about dito T T-->
                     <p>Please type your Gmail account to go to our main website.</p>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Gmail account</label>
+                        <label for="exampleFormControlInput1" class="form-label">Gmail Account</label>
                         <input type="email" id="email" name="email" class="form-control" placeholder="example@gmail.com">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" onlick="sendMagicLink()" class="btn btn-secondary" data-bs-dismiss="modal">Send</button>
+                    <button type="button" onclick="sendMagicLink()" class="btn btn-secondary" data-bs-dismiss="modal">Send</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -214,11 +214,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
-
 <!-- Para ito sa pop-up modal kapag nagsscroll, one time lang to, kapag bagong bukas yung website -->
 <script>
 
-async function sendMagicLink(){
+    async function sendMagicLink(){
             const email = document.getElementById('email').value;
             const response = await fetch('/login', {
                 method:'POST',
@@ -229,7 +228,7 @@ async function sendMagicLink(){
             })
             const result = await response.text()
             alert(result)
-}
+        }
 
     $(document).ready(function() {
         const scrollThreshold = 0.2 * $(document).height();
@@ -245,6 +244,4 @@ async function sendMagicLink(){
         $(window).on('scroll', checkScroll);
     });
 </script>
-
-
 </body>

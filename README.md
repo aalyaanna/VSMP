@@ -16,7 +16,7 @@
 ###
 ```npx prisma init```
 
-### Log in into the official gmail account of the website
+### Log in into the official gmail account of the website.
     email: soundsendofficial@gmail.com
     pass: soundsendofficial01
 

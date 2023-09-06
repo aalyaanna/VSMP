@@ -9,6 +9,8 @@
 ``` npm i uuid ```
 ###
 ``` npm i nodemailer ```
+###
+``` npm i multer ```
 ### 
 ```npm i prisma --save-dev```
 ###

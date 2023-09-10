@@ -80,15 +80,15 @@ app.post('/login',async (req,res) => {
     user.magicCode = magicCode
 
     const mailOptions = {
-        from:'vsmpofficial@gmail.com',
-        to:email,
-        subject:'Magic Auth Link',
-        html: `
-        <p>Click link below to access VSMP Official Web Page.<p>
-        <a href="http://localhost:3000/homepage?email=${encodeURIComponent(
-            email
-        )}&code=${encodeURIComponent(magicCode)}">VSMP Official</a>
-        `,
+            from:'soundsendofficial@gmail.com',
+            to:email,
+            subject:'Magic Auth Link',
+            html: `
+            <p>Click link below to access SoundSend Official Web Page.<p>
+            <a href="http://localhost:3000/homepage?email=${encodeURIComponent(
+                email
+            )}&code=${encodeURIComponent(magicCode)}">SoundSend Official</a>
+            `,
     };
     try{
         await transport.sendMail(mailOptions)

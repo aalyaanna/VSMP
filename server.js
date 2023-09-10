@@ -66,7 +66,7 @@
         storage:Storage
     }).single('attachment');
 
-    // app.use(bodyparser.json());
+    app.use(bodyparser.json());
     app.use(bodyparser.urlencoded({ extended: true }))
 
     app.set('view engine', 'ejs');

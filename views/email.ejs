@@ -55,10 +55,22 @@
                         <label for="exampleFormControlTextarea1" class="form-label">Body:</label>
                         <textarea class="form-control" name="bodyEmail" id="bodyEmail" rows="3" required></textarea>
                     </div>
+                    <!-- notification alert for file uploading -->
+                    <div class="row mb-3">
+                        <div class="col-md-12 text-end">
+                            <div id="fileUploadedAlert" class="alert alert-success d-none" role="alert">
+                                File uploaded successfully!
+                            </div>
+                            <div id="noFileUploadedAlert" class="alert alert-warning d-none" role="alert">
+                                No file uploaded.
+                            </div>
+                        </div>
+                    </div>
                     <div>
                         <button type="button" id="attachFileButton" class="btn btn-lg"><i class="bi bi-folder-plus"></i>&nbsp;&nbsp;&nbsp;Attach Files</button>
                         <input type="file" name="attachment" id="fileInput" style="position: absolute; top: -9999px;">
                     </div>
+                    <div id="fileNameContainer" class="mt-2"></div>
                     <div class="row">
                     <div class="col-md-12 text-center">
                         <button type="submit" class="btn btn-lg">Send Email</button>
@@ -75,11 +87,32 @@
 
 const emailForm = document.getElementById('emailForm');
 const notificationElement = document.getElementById('notification');
+
 const fileInput = document.getElementById('fileInput');
 const attachFileButton = document.getElementById('attachFileButton');
 
+const fileUploadedAlert = document.getElementById('fileUploadedAlert');
+const noFileUploadedAlert = document.getElementById('noFileUploadedAlert');
+
+const fileNameContainer = document.getElementById('fileNameContainer');
+
 attachFileButton.addEventListener('click', () => {
     fileInput.click();
+});
+
+// showing the file name, and notification alert for file uploading
+fileInput.addEventListener('change', () => {
+    const attachment = fileInput.files[0];
+    if (attachment) {
+        const fileName = attachment.name;
+        fileNameContainer.textContent = `Attached File: ${fileName}`;
+        noFileUploadedAlert.classList.add('d-none');
+        fileUploadedAlert.classList.remove('d-none');
+    } else {
+        fileNameContainer.textContent = '';
+        noFileUploadedAlert.classList.remove('d-none');
+        fileUploadedAlert.classList.add('d-none');
+    }
 });
 
 emailForm.addEventListener('submit', async (event) => {

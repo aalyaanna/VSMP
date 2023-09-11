@@ -57,3 +57,4 @@ PROGRESS:
     d. Voice Commands
 
 - Overall Design
+- Database for handling user email address.

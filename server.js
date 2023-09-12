@@ -1,29 +1,43 @@
     const express = require('express');
     const bodyparser = require('body-parser');
     const session = require('express-session');
-
+    
     const path = require('path');
     const router = require ('./router');
 
     const nodemailer = require ('nodemailer')
     const uuid = require ('uuid');
     const multer = require('multer');
+    
+    const { PrismaClient } = require('@prisma/client');
+    const prisma = new PrismaClient();
+    const DATABASE_URL = process.env.DATABASE_URL;
 
     const app = express();
 
     const port = process.env.PORT || 3000;
 
-    //for the access token part, paste your own access token provided on the OAuth playground
-    //also make sure to use the gmail account you used when you accessed the OAuth playground
+    async function connectToDatabase() {
+        try {
+          await prisma.$connect();
+          console.log('Connected to the database');
+        } catch (error) {
+          console.error('Error connecting to the database:', error);
+        }
+      }
+      
+      connectToDatabase();
+
     const transport = nodemailer.createTransport({
         service:'gmail',
         auth:{
             type:'OAuth2',
             user: 'soundsendofficial@gmail.com',
-            accessToken: 'ya29.a0AfB_byAWmo7vGhChD7CbTfuPXt3XPNgQSFCwosMBbooiIEiT97lZYysvqiT9pBQVVeySaVMHNcMX81bF2wQ5ygVuNcZNGlwT7oov0DUVQC70_xsFkH6HC6YnPh6gKo15XMO0Mu3WCqmAIN09EDPTKJR49-aWfRF2m8FDGAaCgYKAZwSARESFQHsvYlsBl7wmcIJMdcayavFbePGfQ0173'
+            accessToken: 'ya29.a0AfB_byAiTO5lwFXBCJtq2uUer5Te7wp70Lr6K3GrSyRA8E__0_xWePTW8Wa0EqOUe5hRNIhVnhqrZCoyfoDleyiC2R2SYKJzeNa-dEhQ1-8j7kHby0qg0S8aVDoweo3642N0cJ2GyJogdGDvwWDHydjpnyGIKLFCWQaCgYKAR0SARESFQGOcNnCM5Fxba6TOvwO6BrWwo3UBg0169'
         }
     })
 
+    // this can be use for companies or organization
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -32,27 +46,7 @@
         }
     })
 
-    //for this part, nakaindicate muna 'yong gmail accounts na se-send-an, will edit this to dynamic
-    const users = [
-        {
-            id:1,email:'oshisoffline@gmail.com',magicCode:null
-
-        },
-        {
-            id:2,email:'mlaoseo@tip.edu.ph',magicCode:null
-            
-        },
-        {
-            id:3,email:'magrubaldo@tip.edu.ph',magicCode:null
-            
-        },
-        {
-            id:4,email:'maesanjose@tip.edu.ph',magicCode:null
-            
-        }
-    ]
-
-    // declare the file path and root directory for attaching files
+    // declare the file path and root directory folder for attaching files
     const Storage = multer.diskStorage({
         destination:function(req,file,callback){
             callback(null,'./uploads');
@@ -71,28 +65,28 @@
 
     app.set('view engine', 'ejs');
 
-    // load static assets
     app.use(express.static('public'));
     app.use(express.static(path.join(__dirname, 'public/assets')))
 
     app.use('/', router);
 
-    // base route
     app.get('/', (req, res) =>{
         res.render('welcomepage', { title : "SoundSend"});
     })
 
     // passwordless authentication link
     app.post('/login',async (req,res) => {
-        const {email} = req.body
-        const user = users.find((u) => u.email === email)
+        const {email} = req.body;
 
-        if(!user){
-            return res.send("User not found!")
-        }
-
-        const magicCode = uuid.v4().substr(0,8)
-        user.magicCode = magicCode
+        try {
+            const magicCode = uuid.v4().substr(0, 8);
+        
+            await prisma.emails.create({
+              data: {
+                email,
+                magicCode,
+              }
+        });
 
         const mailOptions = {
             from:'soundsendofficial@gmail.com',
@@ -112,10 +106,14 @@
             console.log(err)
             res.send("Error sending email...")
         }
+        }catch (error) {
+            console.error(error);
+            res.status(500).json({ status: 'error', message: 'Error creating user' });
+        }
     });
 
     //the purpose of this code is to make sure isang beses lang available or pwede ma-access 'yong link
-    app.get('/homepage',(req,res) => {
+    app.get('/homepage', async(req,res) => {
         const {email,code} = req.query
         const user = users.find((u) => u.email === email && u.magicCode === code);
 
@@ -130,7 +128,7 @@
     //sending emails, to be edit, gagawing dynamic 'yong userEmailAddress
     app.post('/send-email', async (req, res) => {
 
-        upload(req,res,function(err){
+        upload(req,res,async function(err){
             if(err){
                 console.log(err);
                 return res.end("Something went wrong!");
@@ -146,14 +144,25 @@
 
         const { userEmailAddress, recipientEmailAddress, subjectEmail, bodyEmail } = req.body;
 
+        // const email = await prisma.emails.findUnique({
+        //     where: {
+        //         email: userEmailAddress
+        //     }
+        // });
+        
+        // if (!email) {
+        //   console.log("Email not found in database.");
+        //   return;
+        // }
+
         const mailOptions = {
-        from: 'soundsendofficial@gmail.com',
-        to: recipientEmailAddress,
-        subject: subjectEmail,
-        text: bodyEmail,
-        attachments:[{
+            from: userEmailAddress,
+            to: recipientEmailAddress,
+            subject: subjectEmail,
+            text: bodyEmail,
+            attachments:[{
                 path:path
-            }]
+            }],
         };
     
         transporter.sendMail(mailOptions, (error, info) => {
@@ -166,6 +175,6 @@
             }
         });
     })
-});
+})
 
     app.listen(port, ()=>{ console.log("Listening to the server on http://localhost:3000")});

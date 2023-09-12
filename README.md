@@ -22,6 +22,23 @@
     email: soundsendofficial@gmail.com
     pass: soundsendofficial01
 
+### For the database, create your own database then create a model named ``` Emails ```,
+
+### Go to schema.prisma and add this,
+    model Emails {
+          id String @id @default(auto()) @map("_id") @db.ObjectId
+          email String @unique
+          magicCode String?
+    }
+
+### In the datasource db, change the provider into mongodb,
+    provider = "mongodb"
+
+### In the root directory of our project, create a file ``` .env ``` and add this,
+    DATABASE_URL="mongodb+srv://<account name>:<password>@cluster0.534kjgp.mongodb.net/<db name>"
+
+    ps. make sure to remove the <> when you provide your account name, password, and db name.
+    
 ### For this part in server.js, change the access token with the one provided by the OAuth you generated using the official gmail account of the website.
     const transport = nodemailer.createTransport({
     service:'gmail',

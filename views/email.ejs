@@ -41,7 +41,7 @@
                         <form id="emailForm" action="/send-email" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">From:</label>
-                            <input type="email" class="form-control" name="userEmailAddress" id="userEmailAddress" placeholder="name@gmail.com" required>
+                            <input type="email" class="form-control" name="userEmailAddress" id="userEmailAddress" value="oshisoffline@gmail.com" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">To:</label>
@@ -141,6 +141,8 @@
             };
     
             magnifyingGlass.addEventListener("dblclick", removeMagnifiyingGlass);
+
+    // this is for handing email sending 
     
     const emailForm = document.getElementById('emailForm');
     const notificationElement = document.getElementById('notification');
@@ -187,6 +189,10 @@
     
             if (result.status === 'success') {
                 notificationElement.textContent = result.message;
+                fileNameContainer.textContent = '';
+                fileInput.value = '';
+                noFileUploadedAlert.classList.add('d-none'); 
+                fileUploadedAlert.classList.add('d-none');
             } else {
                 console.error(result.message);
                 notificationElement.textContent = 'An error occurred while sending the email.';

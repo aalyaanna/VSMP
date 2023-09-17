@@ -41,8 +41,8 @@
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user:'soundsendofficial@gmail.com',
-            pass:'qpiwuiimdiosyzck'
+            user:'oshisoffline@gmail.com',
+            pass:'ykkszfcrzbquowiy'
         }
     })
 
@@ -134,35 +134,18 @@
                 return res.end("Something went wrong!");
             }
 
-            if (!req.file) {
-                console.log("No file uploaded.");
-                return res.end("No file uploaded.");
-            }
-
-        const path = req.file.path;
-        console.log("Uploaded file path:", path);
+        const attachment = req.file ? [{
+            path: req.file.path
+        }] : [];
 
         const { userEmailAddress, recipientEmailAddress, subjectEmail, bodyEmail } = req.body;
-
-        // const email = await prisma.emails.findUnique({
-        //     where: {
-        //         email: userEmailAddress
-        //     }
-        // });
-        
-        // if (!email) {
-        //   console.log("Email not found in database.");
-        //   return;
-        // }
 
         const mailOptions = {
             from: userEmailAddress,
             to: recipientEmailAddress,
             subject: subjectEmail,
             text: bodyEmail,
-            attachments:[{
-                path:path
-            }],
+            attachments: attachment,
         };
     
         transporter.sendMail(mailOptions, (error, info) => {
@@ -171,6 +154,11 @@
             res.status(500).json({ status: 'error', message: 'Error sending email' });
             } else {
             console.log('Email sent: ' + info.response);
+                req.body.userEmailAddress = '';
+                req.body.recipientEmailAddress = '';
+                req.body.subjectEmail = '';
+                req.body.bodyEmail = '';
+                req.file = null;
             res.status(200).json({ status: 'success', message: 'Email sent successfully!' });
             }
         });

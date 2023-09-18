@@ -66,7 +66,7 @@
     app.set('view engine', 'ejs');
 
     app.use(express.static('public'));
-    app.use(express.static(path.join(__dirname, 'public/assets')))
+    app.use(express.static(path.join(__dirname, 'public/scripts')))
 
     app.use('/', router);
 

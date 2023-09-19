@@ -74,6 +74,28 @@
         res.render('welcomepage', { title : "SoundSend"});
     })
 
+//send queries, contact form
+app.post('/', (req, res) => {
+    console.log(req.body);
+
+    const queriesOptions = {
+        from: req.body.address,
+        to: 'soundsendofficial@gmail.com',
+        subject: `Feedback from ${req.body.name} at SoundSend Website`,
+        text: `The feedback from ${req.body.address}\nSubject: ${req.body.subject}\nQueries: ${req.body.queries}`
+    }
+
+    transporter.sendMail(queriesOptions, (error, info) => {
+        try {
+            console.log('Email sent: ' + info.response);
+            res.send('success');
+        } catch (error) {
+            console.log(error);
+            res.send('error');
+        }
+    });
+});
+
     // passwordless authentication link
     app.post('/login',async (req,res) => {
         const {email} = req.body;

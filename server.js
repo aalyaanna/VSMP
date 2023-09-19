@@ -121,13 +121,12 @@ app.post('/', (req, res) => {
             )}&code=${encodeURIComponent(magicCode)}">SoundSend Official</a>
             `,
         };
-        try{
-            await transport.sendMail(mailOptions)
-            res.send("Magic Auth Link has been sent to your gmail.")
-        }catch(err){
-            console.log(err)
-            res.send("Error sending email...")
-        }
+        try {
+            await transport.sendMail(mailOptions);
+            res.status(200).json({ message: "Magic Auth Link has been sent to your Gmail." });
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ message: "Error sending email..." });
         }catch (error) {
             console.error(error);
             res.status(500).json({ status: 'error', message: 'Error creating user' });

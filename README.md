@@ -69,7 +69,7 @@ PROGRESS:
   
     b. Attaching File (WORKING)
   
-    c. Speech-to-Text
+    c. Speech-to-Text (WORKING)
   
     d. Voice Commands
 

@@ -34,12 +34,12 @@
             <!-- Body content for email-->
             <section class="email_padding">
                 <div class="container border border-black rounded email_custom py-5">
-                    <!-- <div class="m-3"> -->
+                    <div class="m-3">
                         <div id="notification" name="notification" class="notification text-center d-flex justify-content-center align-items-center"></div>
-                            <!-- <div class> 
+                            <div class> 
                                 <a type="button" class="btn btn-back" href="/homepage"><i class="bi bi-caret-left-fill"></i>  Back</a>
-                            </div>    -->
-                        <!-- </div> -->
+                            </div> 
+                        </div>
                     <br><br>
                         <form id="emailForm" action="/send-email" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
@@ -52,11 +52,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Subject:</label>
-                            <input type="text" class="form-control" name="subjectEmail" id="subjectEmail" required>
+                            <input type="text" class="form-control" name="subjectEmail" id="subjectEmail">
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Body:</label>
-                            <textarea class="form-control" name="bodyEmail" id="bodyEmail" rows="3" required></textarea>
+                            <textarea class="form-control" name="bodyEmail" id="bodyEmail" rows="3"></textarea>
                         </div>
                         <div class="row mb-3">
                             <div class="col-6">
@@ -215,6 +215,9 @@
     });
 
     //speech to text recognition function, using javascript only
+    let recognition;
+    let timeout;
+
     document.addEventListener('DOMContentLoaded', () => {
     const bodyEmailTextarea = document.getElementById('bodyEmail');
     const startSpeechRecognitionButton = document.getElementById('startSpeechRecognition');
@@ -222,24 +225,33 @@
     let recognition = new webkitSpeechRecognition();
 
     recognition.continuous = true;
-    recognition.interimResults = false;
+    recognition.interimResults = true;
     recognition.lang = 'en-US';
 
-        recognition.onresult = function(event) {
-        let interimTranscript = '';
-        const activeElement = document.activeElement;
+    recognition.onresult = function(event) {
+    clearTimeout(timeout);
+    let interimTranscript = '';
+    const activeElement = document.activeElement;
 
         if (!activeElement.classList.contains('form-control')) {
             for (let i = event.resultIndex; i < event.results.length; ++i) {
                 if (event.results[i].isFinal) {
-                    bodyEmailTextarea.value += event.results[i][0].transcript + ' ';
+                    const transcript = event.results[i][0].transcript;
+                    bodyEmailTextarea.value += transcript;
+                    console.log('Transcript:', transcript);
                 } else {
                     interimTranscript += event.results[i][0].transcript;
                 }
             }
-        }
+        };
+
+    //detect pause from speech to create a new paragraph
+    timeout = setTimeout(() => {
+            bodyEmailTextarea.value += '\n\n';
+        }, 5000);
     };
-        recognition.onend = function() {
+    
+    recognition.onend = function() {
             startSpeechRecognitionButton.disabled = false;
     };
         startSpeechRecognitionButton.addEventListener('click', function() {
@@ -248,7 +260,17 @@
         });
     });
     
-    //click fields for computer to read its content
+    //transcribing "question mark" as a symbol not as an actual word
+    function processTranscript(transcript) {
+        if (transcript.toLowerCase().includes('question mark')) {
+            return '?';
+        } else {
+            return transcript + ' ';
+        }
+    }
+
+    //click a certain field for the computer to read its content, 
+    //to be edited
     document.addEventListener('DOMContentLoaded', () => {
     const fields = document.querySelectorAll('.form-control');
 

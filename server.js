@@ -17,6 +17,7 @@
 
     const port = process.env.PORT || 3000;
 
+    //database connection
     async function connectToDatabase() {
         try {
           await prisma.$connect();
@@ -27,26 +28,27 @@
       }
       
       connectToDatabase();
-
+    
+    //transporter for gmail authentication link
     const transport = nodemailer.createTransport({
         service:'gmail',
         auth:{
             type:'OAuth2',
             user: 'soundsendofficial@gmail.com',
-            accessToken: 'ya29.a0AfB_byAiTO5lwFXBCJtq2uUer5Te7wp70Lr6K3GrSyRA8E__0_xWePTW8Wa0EqOUe5hRNIhVnhqrZCoyfoDleyiC2R2SYKJzeNa-dEhQ1-8j7kHby0qg0S8aVDoweo3642N0cJ2GyJogdGDvwWDHydjpnyGIKLFCWQaCgYKAR0SARESFQGOcNnCM5Fxba6TOvwO6BrWwo3UBg0169'
+            accessToken: 'ya29.a0AfB_byBodpxcG6yMTr7dV1Iex0Ur6wl9lhu2sqzdSxHUJ1ERa3TeOJKbuBPNGaWvLkoHpihdJBYEwIY2H1ZgWT43jBLsPY7tey21hmUPCivm8_fw3cckVXDU-3rOPMXblwMd1zChIqy6WPl5aClR7x7xcnLYjEiCQrJCaCgYKASUSARESFQGOcNnClejYgPyGm_sEYbtlTtC0eA0171'
         }
     })
 
-    // this can be use for companies or organization
+    //this can be use for companies or organization
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
             user:'oshisoffline@gmail.com',
-            pass:'ykkszfcrzbquowiy'
+            pass:'txxdvicihtvcgevy'
         }
     })
 
-    // declare the file path and root directory folder for attaching files
+    //declare the file path and root directory folder for attaching files
     const Storage = multer.diskStorage({
         destination:function(req,file,callback){
             callback(null,'./uploads');
@@ -74,29 +76,29 @@
         res.render('welcomepage', { title : "SoundSend"});
     })
 
-//send queries, contact form
-app.post('/', (req, res) => {
-    console.log(req.body);
+    //function for sending queries
+    app.post('/', (req, res) => {
+        console.log(req.body);
 
-    const queriesOptions = {
-        from: req.body.address,
-        to: 'soundsendofficial@gmail.com',
-        subject: `Feedback from ${req.body.name} at SoundSend Website`,
-        text: `The feedback from ${req.body.address}\nSubject: ${req.body.subject}\nQueries: ${req.body.queries}`
-    }
-
-    transporter.sendMail(queriesOptions, (error, info) => {
-        try {
-            console.log('Email sent: ' + info.response);
-            res.send('success');
-        } catch (error) {
-            console.log(error);
-            res.send('error');
+        const queriesOptions = {
+            from: req.body.address,
+            to: 'soundsendofficial@gmail.com',
+            subject: `Feedback from ${req.body.name} at SoundSend Website`,
+            text: `The feedback from ${req.body.address}\nSubject: ${req.body.subject}\nQueries: ${req.body.queries}`
         }
-    });
-});
 
-    // passwordless authentication link
+        transporter.sendMail(queriesOptions, (error, info) => {
+            try {
+                console.log('Email sent: ' + info.response);
+                res.send('success');
+            } catch (error) {
+                console.log(error);
+                res.send('error');
+            }
+        });
+    });
+
+    //passwordless authentication link
     app.post('/login',async (req,res) => {
         const {email} = req.body;
 
@@ -121,14 +123,15 @@ app.post('/', (req, res) => {
             )}&code=${encodeURIComponent(magicCode)}">SoundSend Official</a>
             `,
         };
-         await transport.sendMail(mailOptions);
+
+            await transport.sendMail(mailOptions);
             res.status(200).json({ message: "Magic Auth Link has been sent to your Gmail." });
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: "Error sending email..." });
         }
     })
-
+    
     //the purpose of this code is to make sure isang beses lang available or pwede ma-access 'yong link
     app.get('/homepage', async(req,res) => {
         const {email,code} = req.query

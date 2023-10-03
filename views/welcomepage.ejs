@@ -5,9 +5,11 @@
 
     <body>
         <!--Navigation bar-->
-        <nav class="navbar navbar-expand-lg fixed-top">
+        <!-- OLD CODE 
+            <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">SoundSend</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+                <a class="navbar-brand" href="#"><span class="text-dark">Sound</span>Send</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -27,43 +29,92 @@
                         </li>
                     </ul>
                 </div>
+
             </div>
-        </nav>
+        </nav> -->
     
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+              <a class="navbar-brand" href="#"><span class="text-dark">Sound</span>Send</a>
+    
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">about</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">services</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">FAQ</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">contact us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#gmailModal">gmail</a>
+                    </li>
+                    </ul>
+                </div>
+                </div>
+            </nav>
+                
+       
+
         <!-- welcome quote content, pwede nyo palitan if di nyo bet ehehe-->
         <section class="welcome-banner">
-            <div class="container quote-padding">
+            <!--OLD CODE 
+                <div class="container quote-padding">
                 <h1 class="text-center" id="welcome_quote">Building a user-friendly website to bridge the gap to the visually impaired</h1>
-            </div>
+            </div> -->
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <!-- <img src=" " class="d-block w-100" alt="..."> -->
+                        
+                            <div class="carousel-caption">
+                            <h5>Welcome to SoundSend</h5>
+                                    <p>"Building a user-friendly website to bridge the gap for the visually impaired."</p>
+                        
+                    </div>
+                </div>
+          </div>
         </section>
     
-        <!-- Main content, explanation on what is the purpose of the website-->
-        <section class="about section-padding" id="about">
-            <div class="container">
-                <div class="about-text">
-                    <h2>What is SoundSend?</h2>
-                    <!-- Papalitan to ng full explanation about the website, for now lorem muna-->
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, labore reiciendis. Assumenda eos quod animi! Soluta nesciunt inventore dolores excepturi provident, culpa beatae tempora, explicabo corporis quibusdam corrupti. Autem, quaerat. Assumenda quo aliquam vel, nostrum explicabo ipsum dolor, ipsa perferendis porro doloribus obcaecati placeat natus iste odio est non earum?</p>
+            <!-- about section starts -->
+            <section id="about" class="about section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 col-12">
+                            <div class="about-img">
+                                <img src="https://i.pinimg.com/originals/28/bd/2c/28bd2c34b5ce154ada4e5145807774e6.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    
+                        <div class="col-lg-8 col-md-12 col-12 ">
+                            <div class="about-text">
+                                <h2>What is SoundSend?</h2><br>
+                                <p align="justify">SoundSend is an innovative capstone project that utilizes Natural Language Processing (NLP) voice recognition and Speech-To-Text (STT) technology to empower visually impaired individuals, particularly those with low vision and color vision deficiency (CVD). It streamlines email tasks, such as composing, reading, and sending emails with voice commands, improving workplace performance and inclusivity. This project also serves as a valuable reference for future researchers in the field. SoundSend focuses on Gmail interactions, offers bilingual functionality, and is set to be executed in the 2023-2024 academic year, marking a significant step toward enhancing digital accessibility.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-    
-                <div class="about-text">
-                    <h2>How does SoundSend work?</h2>
-                    <!-- Papalitan to ng full explanation kung pano nila makukuha link, preferrable if step by step, for now lorem muna-->
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, labore reiciendis. Assumenda eos quod animi! Soluta nesciunt inventore dolores excepturi provident, culpa beatae tempora, explicabo corporis quibusdam corrupti. Autem, quaerat. Assumenda quo aliquam vel, nostrum explicabo ipsum dolor, ipsa perferendis porro doloribus obcaecati placeat natus iste odio est non earum?</p>
-                    <p>Step by step </p>
-                </div>
-            </div>
-        </section>
+            </section>
     
         <!-- Services na inooffer ng website.-->
         <section class="services section-padding" id="services">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 pb-3">
                         <div class="section-header text-center pb-3">
                             <h2>SoundSend Services</h2>
                             <!-- Explanation ulit ng inooffer natin -->
-                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, quo.</h4>
+                            <h4>Users can look forward to these features when accessing SoundSend.</h4>
                         </div>
                     </div>
                 </div>
@@ -74,7 +125,7 @@
                             <div class="card-body">
                                 <i class="bi bi-search"></i>
                                 <h3 class="card-title">Magnifier</h3>
-                                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi modi temporibus alias iste. Accusantium?</p>
+                                <p class="lead">The implementation of Magnifier enlarges text, improving readability and accessibility for visually impaired users.</p>
                             </div>
                         </div>
                     </div>
@@ -83,7 +134,7 @@
                             <div class="card-body">
                                 <i class="bi bi-menu-button-wide-fill"></i>
                                 <h3 class="card-title">Modes of Screen</h3>
-                                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi modi temporibus alias iste. Accusantium?</p>
+                                <p class="lead">Offers various screen modes designed to assist color blind users in distinguishing and interacting with content more effectively.</p>
                             </div>
                         </div>
                     </div>
@@ -92,7 +143,7 @@
                             <div class="card-body">
                                 <i class="bi bi-soundwave"></i>
                                 <h3 class="card-title">Speech Recognition</h3>
-                                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi modi temporibus alias iste. Accusantium?</p>
+                                <p class="lead">Speech Recognition enables speech-to-text, allowing users to transcribe spoken words into text for email communication.</p>
                             </div>
                         </div>
                     </div>
@@ -116,33 +167,44 @@
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                     <div class="circle-icon"><i class="bi bi-question-lg"></i></div>
-                                    <span>Question Sample #1</span>
+                                    <span>What is SoundSend?</span>
                                 </button>
                             </h2>
                             <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder Content</div>
+                                <div class="accordion-body">SoundSend is an assistive website application designed to improve email communication for visually impaired employees. It offers features like text enlargement, speech-to-text, and voice commands.</div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                                     <div class="circle-icon"><i class="bi bi-question-lg"></i></div>
-                                    <span>Question Sample #2</span>
+                                    <span>How do I use the Magnifier in SoundSend?</span>
                                 </button>
                             </h2>
                             <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder Content</div>
+                                <div class="accordion-body">To use the Magnifier, simply activate it within the application while reading or composing emails. It will enlarge the text for improved visibility.</div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                                     <div class="circle-icon"><i class="bi bi-question-lg"></i></div>
-                                    <span>Question Sample #3</span>
+                                    <span>Is SoundSend available in multiple languages?</span>
                                 </button>
                             </h2>
                             <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder Content</div>
+                                <div class="accordion-body">Yes, SoundSend includes bilingual speech-to-text functionality to cater to users who prefer English or Filipino language.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                                    <div class="circle-icon"><i class="bi bi-question-lg"></i></div>
+                                    <span>How do I get started with SoundSend?</span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">To begin, please ensure you have an existing Gmail account. Enter it in the modal pop-up, and then wait for a link to be sent. After receiving the link, you will be redirected to the website's main page.</div>
                             </div>
                         </div>
                     </div>

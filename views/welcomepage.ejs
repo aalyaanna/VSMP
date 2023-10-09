@@ -1,236 +1,405 @@
 <!-- Dito yung design para don sa magtatype ng gmail nila or yung magic link natin
     if may naiisip pa kayong design, palagay na lang T T-->
 
-<%- include('header') -%>
+    <%- include('header') -%>
 
-<body>
-    <!--Navigation bar-->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">VSMP</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+    <body>
+        <!--Navigation bar-->
+        <!-- OLD CODE 
+            <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><span class="text-dark">Sound</span>Send</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">about</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#services">services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#faq">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">contact us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#gmailModal">gmail</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav> -->
+    
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+              <a class="navbar-brand" href="#"><span class="text-dark">Sound</span>Send</a>
+    
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="#about">about</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#services">services</a>
-                    </li>
+                    </li> 
                     <li class="nav-item">
                         <a class="nav-link" href="#faq">FAQ</a>
-                    </li>
+                    </li> 
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">contact us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#gmailModal">gmail</a>
                     </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+                    </ul>
+                </div>
+                </div>
+            </nav>
+                
+       
 
-    <!-- welcome quote content, pwede nyo palitan if di nyo bet ehehe-->
-    <section class="welcome-banner">
-        <div class="container quote-padding">
-            <h1 class="text-center" id="welcome_quote">Building a user-friendly website to bridge the gap to the visually impaired</h1>
-        </div>
-    </section>
+        <!-- welcome quote content, pwede nyo palitan if di nyo bet ehehe-->
+        <section class="welcome-banner">
+            <!--OLD CODE 
+                <div class="container quote-padding">
+                <h1 class="text-center" id="welcome_quote">Building a user-friendly website to bridge the gap to the visually impaired</h1>
+            </div> -->
 
-    <!-- Main content, explanation on what is the purpose of the website-->
-    <section class="about section-padding" id="about">
-        <div class="container">
-            <div class="about-text">
-                <h2>What is VSMP?</h2>
-                <!-- Papalitan to ng full explanation about the website, for now lorem muna-->
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, labore reiciendis. Assumenda eos quod animi! Soluta nesciunt inventore dolores excepturi provident, culpa beatae tempora, explicabo corporis quibusdam corrupti. Autem, quaerat. Assumenda quo aliquam vel, nostrum explicabo ipsum dolor, ipsa perferendis porro doloribus obcaecati placeat natus iste odio est non earum?</p>
-            </div>
-
-            <div class="about-text">
-                <h2>How does Gmail Link works?</h2>
-                <!-- Papalitan to ng full explanation kung pano nila makukuha link, preferrable if step by step, for now lorem muna-->
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, labore reiciendis. Assumenda eos quod animi! Soluta nesciunt inventore dolores excepturi provident, culpa beatae tempora, explicabo corporis quibusdam corrupti. Autem, quaerat. Assumenda quo aliquam vel, nostrum explicabo ipsum dolor, ipsa perferendis porro doloribus obcaecati placeat natus iste odio est non earum?</p>
-                <p>Step by step </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services na inooffer ng website.-->
-    <section class="services section-padding" id="services">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="section-header text-center pb-3">
-						<h2>VSMP Services</h2>
-                        <!-- Explanation ulit ng inooffer natin -->
-						<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, quo.</h4>
-					</div>
-				</div>
-			</div>
-            <!-- Explanation per magnifier, modes, and speech recog -->
-			<div class="row">
-				<div class="col-12 col-md-12 col-lg-4">
-					<div class="card text-center pb-2">
-						<div class="card-body">
-							<i class="bi bi-search"></i>
-							<h3 class="card-title">Magnifier</h3>
-							<p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi modi temporibus alias iste. Accusantium?</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-12 col-lg-4">
-					<div class="card text-center pb-2">
-						<div class="card-body">
-							<i class="bi bi-menu-button-wide-fill"></i>
-							<h3 class="card-title">Modes of Screen</h3>
-							<p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi modi temporibus alias iste. Accusantium?</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-12 col-lg-4">
-					<div class="card text-center pb-2">
-						<div class="card-body">
-							<i class="bi bi-soundwave"></i>
-							<h3 class="card-title">Speech Recognition</h3>
-							<p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi modi temporibus alias iste. Accusantium?</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-    <!-- FAQ for them, tas lagyan na lang ng mga questions na sa tingin natin matatanong nila (e.g. saan makikita yung magic link?)-->
-    <section class="faq section-padding" id="faq">
-        <div class="container">
-            <div class="row">
-				<div class="col-md-12">
-					<div class="section-header text-center">
-						<h2>Frequently Asked Questions</h2>
-					</div>
-				</div>
-			</div>
-            <div class="row">
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                <div class="circle-icon"><i class="bi bi-question-lg"></i></div>
-                                <span>Question sample #1</span>
-                            </button>
-                        </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Placeholder content</div>
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <!-- <img src=" " class="d-block w-100" alt="..."> -->
+                        
+                            <div class="carousel-caption">
+                            <h5>Welcome to SoundSend</h5>
+                                    <p>"Building a user-friendly website to bridge the gap for the visually impaired."</p>
+                        
+                    </div>
+                </div>
+          </div>
+        </section>
+    
+            <!-- about section starts -->
+            <section id="about" class="about section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 col-12">
+                            <div class="about-img">
+                                <img src="https://i.pinimg.com/originals/28/bd/2c/28bd2c34b5ce154ada4e5145807774e6.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    
+                        <div class="col-lg-8 col-md-12 col-12 ">
+                            <div class="about-text">
+                                <h2>What is SoundSend?</h2><br>
+                                <p align="justify">SoundSend is an innovative capstone project that utilizes Natural Language Processing (NLP) voice recognition and Speech-To-Text (STT) technology to empower visually impaired individuals, particularly those with low vision and color vision deficiency (CVD). It streamlines email tasks, such as composing, reading, and sending emails with voice commands, improving workplace performance and inclusivity. This project also serves as a valuable reference for future researchers in the field. SoundSend focuses on Gmail interactions, offers bilingual functionality, and is set to be executed in the 2023-2024 academic year, marking a significant step toward enhancing digital accessibility.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                <div class="circle-icon"><i class="bi bi-question-lg"></i></div>
-                                <span>Question sample #2</span>
-                            </button>
-                        </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Placeholder content</div>
+                </div>
+            </section>
+    
+        <!-- Services na inooffer ng website.-->
+        <section class="services section-padding" id="services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 pb-3">
+                        <div class="section-header text-center pb-3">
+                            <h2>SoundSend Services</h2>
+                            <!-- Explanation ulit ng inooffer natin -->
+                            <h4>Users can look forward to these features when accessing SoundSend.</h4>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                <div class="circle-icon"><i class="bi bi-question-lg"></i></div>
-                                <span>Question sample #3</span>
-                            </button>
-                        </h2>
-                        <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Placeholder content</div>
+                </div>
+                <!-- Explanation per magnifier, modes, and speech recog -->
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-4">
+                        <div class="card text-center pb-2">
+                            <div class="card-body">
+                                <i class="bi bi-search"></i>
+                                <h3 class="card-title">Magnifier</h3>
+                                <p class="lead">The implementation of Magnifier enlarges text, improving readability and accessibility for visually impaired users.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-4">
+                        <div class="card text-center pb-2">
+                            <div class="card-body">
+                                <i class="bi bi-menu-button-wide-fill"></i>
+                                <h3 class="card-title">Modes of Screen</h3>
+                                <p class="lead">Offers various screen modes designed to assist color blind users in distinguishing and interacting with content more effectively.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-4">
+                        <div class="card text-center pb-2">
+                            <div class="card-body">
+                                <i class="bi bi-soundwave"></i>
+                                <h3 class="card-title">Speech Recognition</h3>
+                                <p class="lead">Speech Recognition enables speech-to-text, allowing users to transcribe spoken words into text for email communication.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- I think need natin mag add, if ever lang na may suggestions sila na iadd ganon? -->
-    <section class="contact section-padding" id="contact">
-		<div class="container mt-5 mb-5">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="section-header text-center pb-2">
-						<h2>Contact Us</h2>
-						<h5>If you have any queries, questions and suggestions, you can send it to us!<br>
-                            Please fill up the contact form for us to see your concerns.</h5>
-					</div>
-				</div>
-			</div>
-			<div class="row m-0 contact-form">
-				<div class="col-md-12 p-0 pt-4">
-					<div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Your full name</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1">
+        </section>
+    
+        <!-- FAQ for them, tas lagyan na lang ng mga questions na sa tingin natin matatanong nila (e.g. saan makikita yung magic link?)-->
+        <section class="faq section-padding" id="faq">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-header text-center">
+                            <h2>Frequently Asked Questions</h2>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Your Gmail address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com">
+                </div>
+                <div class="row">
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    <div class="circle-icon"><i class="bi bi-question-lg"></i></div>
+                                    <span>What is SoundSend?</span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">SoundSend is an assistive website application designed to improve email communication for visually impaired employees. It offers features like text enlargement, speech-to-text, and voice commands.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                    <div class="circle-icon"><i class="bi bi-question-lg"></i></div>
+                                    <span>How do I use the Magnifier in SoundSend?</span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">To use the Magnifier, simply activate it within the application while reading or composing emails. It will enlarge the text for improved visibility.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                    <div class="circle-icon"><i class="bi bi-question-lg"></i></div>
+                                    <span>Is SoundSend available in multiple languages?</span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">Yes, SoundSend includes bilingual speech-to-text functionality to cater to users who prefer English or Filipino language.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                                    <div class="circle-icon"><i class="bi bi-question-lg"></i></div>
+                                    <span>How do I get started with SoundSend?</span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">To begin, please ensure you have an existing Gmail account. Enter it in the modal pop-up, and then wait for a link to be sent. After receiving the link, you will be redirected to the website's main page.</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Your Queries here</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-				</div>
-			</div>
-            <div class="text-center">
-                <button type="button" class="btn btn-lg">Send</button>
+                </div>
             </div>
-		</div>
-	</section>
+        </section>
+    
+        <!-- I think need natin mag add, if ever lang na may suggestions sila na iadd ganon? -->
+        <section class="contact section-padding" id="contact">
+            <form class="container mt-5 mb-5">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-header text-center pb-2">
+                            <h2>Contact Us</h2>
+                            <h5>If you have any queries, questions and suggestions, you can send it to us!<br>
+                                Please fill up the contact form for us to see your concerns.</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 contact-form">
+                    <div class="col-md-12 p-0 pt-4">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name:</label>
+                            <input type="text" class="form-control" id="name" placeholder="Full Name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Gmail Address:</label>
+                            <input type="email" class="form-control" id="address" placeholder="name@gmail.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject:</label>
+                            <input type="text" class="form-control" id="subject" placeholder="Subject">
+                        </div>
+                        <div class="mb-3">
+                            <label for="queries" class="form-label">Send Queries:</label>
+                            <textarea class="form-control" id="queries" rows="3" placeholder="Queries"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-lg submit">Send</button>
+                </div>
+            </form>
+        </section>
+    
+    
+        <!-- Modal for the gmail link authentication,,, dito po sha opo -->
+        <div class="modal fade" id="gmailModal" tabindex="-1" aria-labelledby="gmailModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="gmailModalLabel">Gmail Link</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Please palagyan ng explanation about dito T T-->
+                        <p>Please type your Gmail account to go to our main website.</p>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Gmail Account</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="example@gmail.com">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="sendMagicLink()" class="btn btn-secondary" data-bs-dismiss="modal">Send</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <!-- Modal for displaying email sending status -->
+        <div class="modal fade" id="emailStatusModal" tabindex="-1" aria-labelledby="emailStatusModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="emailStatusModalLabel">Gmail Auth Link status</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="emailStatusMessage"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Modal for the gmail link authentication,,, dito po sha opo -->
-    <div class="modal fade" id="gmailModal" tabindex="-1" aria-labelledby="gmailModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <!-- Modal sa contact us -->
+          <div class="modal" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="gmailModalLabel">Gmail Link</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title">Contact User Feedback</h5>
+                    <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Please palagyan ng explanation about dito T T-->
-                    <p>Please type your Gmail account to go to our main website.</p>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Gmail account</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@gmail.com">
-                    </div>
+                    <p id="modal-message"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Send</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
                 </div>
+              </div>
             </div>
-        </div>
-    </div>
-
-<%- include('footer') -%>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-
-
-<!-- Para ito sa pop-up modal kapag nagsscroll, one time lang to, kapag bagong bukas yung website -->
-<script>
-    $(document).ready(function() {
-        const scrollThreshold = 0.2 * $(document).height();
-        function showModal() {
-            $('#gmailModal').modal('show');
-            $(window).off('scroll', checkScroll);
-        }
-        function checkScroll() {
-            if ($(window).scrollTop() >= scrollThreshold) {
-                showModal();
+          </div>
+          
+    
+    <%- include('footer') -%>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Para ito sa pop-up modal kapag nagsscroll, one time lang to, kapag bagong bukas yung website -->
+    <script>
+    
+        async function sendMagicLink(){
+                const email = document.getElementById('email').value;
+                const response = await fetch('/login', {
+                    method:'POST',
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify({email})
+                })
+                const result = await response.json();
+                document.getElementById('emailStatusMessage').textContent = result.message;
+                $('#emailStatusModal').modal('show');
             }
+    
+        $(document).ready(function() {
+            const scrollThreshold = 0.2 * $(document).height();
+            function showModal() {
+                $('#gmailModal').modal('show');
+                $(window).off('scroll', checkScroll);
+            }
+            function checkScroll() {
+                if ($(window).scrollTop() >= scrollThreshold) {
+                    showModal();
+                }
+            }
+            $(window).on('scroll', checkScroll);
+        });
+
+        //function for sending queries 
+        const contactForm = document.querySelector('.contact');
+        const name = document.getElementById('name');
+        const address = document.getElementById('address');
+        const subject = document.getElementById('subject');
+        const queries = document.getElementById('queries');
+        const modal = document.getElementById('myModal');
+        const modalMessage = document.getElementById('modal-message');
+        const closeBtn = document.querySelector('.close');
+
+        contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        let formData = {
+            name: name.value,
+            address: address.value,
+            subject: subject.value,
+            queries: queries.value,
+        };
+
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', '/');
+        xhr.setRequestHeader('content-type', 'application/json');
+        xhr.onload = function () {
+            console.log(xhr.responseText);
+            if (xhr.responseText == 'success') {
+            modalMessage.textContent = 'Email sent!';
+            modal.style.display = 'block';
+            name.value = '';
+            address.value = '';
+            subject.value = '';
+            queries.value = '';
+            } else {
+            modalMessage.textContent = 'Email failed!';
+            modal.style.display = 'block';
+            }
+        };
+
+        xhr.send(JSON.stringify(formData));
+        });
+
+        //close the modal when the close button is clicked
+        closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        });
+
+        //close the modal if the user clicks outside of it
+        window.addEventListener('click', (e) => {
+        if (e.target == modal) {
+            modal.style.display = 'none';
         }
-        $(window).on('scroll', checkScroll);
-    });
-</script>
-
-
-</body>
+        });
+    </script>
+    </body>
+    

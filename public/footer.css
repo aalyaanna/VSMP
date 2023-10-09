@@ -1,18 +1,18 @@
 /* lahat ng nasa footer.ejs na design andito */
 
 .footer-custom {
-    background-color: #EBF5FB;
-    color: #233169;
+    background-color: #fef9f3;
+    color: black;
     font-size: larger;
 }
 
 .footer-custom i {
-    color: #233169;
+    color: #fef9f3;
 }
 
 .copyright-custom {
-    background-color: #233169;
-    color: #EBF5FB;
+    background-color: #fca311;
+    color: black;
 }
 
 .footer-title {

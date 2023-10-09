@@ -1,115 +1,268 @@
 <!-- Home page kung saan may create email button, magnifier, mode of screen and such
     if may naiisip pa kayong design pls pu padagdag na lang ehe, may mga comments naman if nalilito kayo <3-->
 
-<%- include('header') -%>
-<body>
-
-    <!--Navigation bar-->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">VSMP</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="magnify">Magnifier</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Modes of Screen
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" value="default">Default</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" value="Deuteranomaly">Deuteranomaly</a></li>
-                            <li><a class="dropdown-item" value="Protanomaly">Protanomaly</a></li>
-                            <li><a class="dropdown-item" value="Tritanomaly">Tritanomaly</a></li>
-                            <li><a class="dropdown-item" value="Tritanopia">Tritanopia</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Body content-->
-    <section class="home_padding">
-        <div class="container border border-black rounded text-center py-5">
-            <div class="m-3">
-                <h1 id="homepage_quote">Homepage</h1>
-                <div>
-                    <!-- Content will be changed kapag nasa katinuan na ko please, as much as possible explanation kung pano gamitin-->
-                    <p class="paragraph_text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet facilisis magna etiam tempor orci eu lobortis. Aliquam sem fringilla ut morbi tincidunt. Urna nec tincidunt praesent semper feugiat nibh sed pulvinar. Pretium fusce id velit ut. Purus in massa tempor nec feugiat nisl. Diam volutpat commodo sed egestas egestas. Laoreet id donec ultrices tincidunt arcu non sodales neque. Augue lacus viverra vitae congue eu consequat ac felis donec. Dictum non consectetur a erat nam at. Ac tortor vitae purus faucibus ornare suspendisse. Tellus orci ac auctor augue mauris. Eu lobortis elementum nibh tellus molestie. Orci dapibus ultrices in iaculis nunc. Aliquam id diam maecenas ultricies mi eget mauris. Neque viverra justo nec ultrices. Praesent tristique magna sit amet. Eget nullam non nisi est sit. Pulvinar elementum integer enim neque volutpat ac. Sagittis orci a scelerisque purus semper eget duis at.
-                        <br>
-                        Turpis in eu mi bibendum neque. Euismod nisi porta lorem mollis aliquam. Posuere lorem ipsum dolor sit amet consectetur. Dictum non consectetur a erat. Amet venenatis urna cursus eget. Fames ac turpis egestas sed tempus urna et pharetra. Velit aliquet sagittis id consectetur. Adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus urna. Est ultricies integer quis auctor elit sed vulputate mi sit. Lacinia at quis risus sed vulputate. Lobortis mattis aliquam faucibus purus in. Eget gravida cum sociis natoque penatibus et magnis dis. Varius vel pharetra vel turpis nunc eget lorem. Ac turpis egestas integer eget aliquet nibh praesent. Pretium quam vulputate dignissim suspendisse in. Convallis a cras semper auctor neque vitae tempus quam pellentesque.
-                    </p>
+    <%- include('header') -%>
+    <body>
+    
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+              <a class="navbar-brand" href="/homepage"><span class="text-dark span_custom">Sound</span>Send</a>
+    
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="magnify">Magnifier</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Modes of Screen
+                            </a>
+                            <!-- Wait lang, tatapusin ko within the week -->
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" id="default">Default</a></li>
+                                <li><a class="dropdown-item" id="dark-mode">Dark Mode</a></li>
+                                <li><hr class="dropdown-divider" style="border-color:black;"></li>
+                                <li><span class="dropdown-item-text" value="FontSizeChanger">Font Size Changer</span></li>
+                                <li>
+                                <span class="dropdown-item-text value">20px</span>
+                                <input
+                                type="range"
+                                name="range"
+                                id="range-slider"
+                                class="range-slider"
+                                min="16"
+                                max="30"
+                                value="40"
+                                step="1"
+                                />
+                                </li>
+                                <li><hr class="dropdown-divider" style="border-color:black;"></li>
+                                <li><a class="dropdown-item" value="ResetFontSize" id="reset-font-size">Reset Font Size</a></li>
+                                <li><hr class="dropdown-divider" style="border-color:black;"></li>
+                                <li><span class="dropdown-item-text">Colorblind Options</span></li>
+                                <li><a class="dropdown-item" id="deuteranomaly">Deuteranomaly</a></li>
+                                <li><a class="dropdown-item" id="protanomaly">Protanomaly</a></li>
+                                <li><a class="dropdown-item" id="tritanomaly">Tritanomaly</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
-                <div class="homepage_btn">
-                    <a type="button" class="btn btn-primary mx-5" href="/email">Compose <br> Email</a>
-                    <button type="button" class="btn btn-primary mx-5">Activate Speech <br> Recognition</button>
+                </div>
+            </nav>
+    
+        <!-- Body content-->
+        <section class="home_padding" style="padding-top: 100px;">
+            <div class="container border border-black rounded py-5">
+                <div class="m-3">
+                    <h1 id="homepage_quote" class="text-center">Homepage</h1><br>
+                    <div>
+                        <!-- Content will be changed kapag nasa katinuan na ko please, as much as possible explanation kung pano gamitin-->
+                        <p class="paragraph_text">
+    
+                            <h2 >Project Objectives</h2>
+                            <p class="font-changer">At SoundSend, our capstone project is dedicated to revolutionizing email accessibility for visually impaired employees. Leveraging cutting-edge Natural Language Processing (NLP) technology, we aim to empower these individuals in their email-related tasks. Our specific objectives include:</p>
+                            <ul class="font-changer">
+                                <li>Developing a web application tailored to assist visually impaired employees with email tasks.</li>
+                                <li>Integrating bilingual speech-to-text functionality for seamless communication.</li>
+                                <li>Offering customizable screen display options to cater to individual preferences.</li>
+                            </ul>
+                        
+                            <h2>Significance of the Project</h2>
+                            <p class="font-changer">Our project holds immense significance for various stakeholders:</p>
+                            <ul class="font-changer">
+                                <li>Visually Impaired: SoundSend equips visually impaired employees with the tools to enhance their work performance by providing voice-assisted email creation, sending, and reading capabilities.</li>
+                                <li>Business Organizations: We help businesses foster inclusivity by enabling better communication and collaboration with visually impaired employees, ultimately breaking digital barriers.</li>
+                                <li>Future Researchers: SoundSend serves as a valuable reference for future research endeavors, offering insights into the integration of NLP voice recognition in email systems to support the visually impaired.</li>
+                            </ul>
+                        
+                            <h2>Scope and Limitations</h2>
+                            <p class="font-changer">SoundSend focuses on developing a web application that utilizes NLP Speech Recognition and Speech-To-Text (STT) technology to improve the work performance of employees with visual impairments, including those with low vision and color vision deficiency (CVD). Our application primarily facilitates email-related tasks such as composing, reading, and sending emails, with the option for manual or voice-command execution. While we integrate bilingual functionality for English and Filipino languages, we exclusively target Gmail interactions. It's important to note that security measures for user credentials storage are not a primary focus. Our project will be completed within the summer and first semester of the year 2023-2024. SoundSend is committed to making email communication accessible to all.</p>
+                        </p>
+                    </div>
+                    <br>
+                    <div class="homepage_btn text-center mt-5 mb-5">
+                        <a type="button" class="btn mx-5 font-changer email_btn" href="/email">Compose <br> Email</a>
+                        <button type="button" class="btn mx-5 font-changer">Activate Speech <br> Recognition</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    
+        <%- include('footer') -%>
+    
+        <!-- Magnifying glass, working na, WAG GAGALAWIN-->
+        <script>
+            
+            const SCALE = 1.3; //magnification
+            const SIZE = 150; // diameter
+            const LENSE_OFFSET_X = SIZE / 10.2;
+            const LENSE_OFFSET_Y = SIZE / 10.2;
+    
+            document.documentElement.style.setProperty("--scale", SCALE);
+            document.documentElement.style.setProperty("--size", SIZE + "px");
+    
+            //create magnifying glass (lense)
+            const handle = document.createElement("div");
+            handle.classList.add("handle");
+    
+            const magnifyingGlass = document.createElement("div");
+            magnifyingGlass.classList.add("magnifying-glass");
+            magnifyingGlass.style.top = LENSE_OFFSET_Y + "px";
+            magnifyingGlass.style.left = LENSE_OFFSET_X + "px";
+    
+            handle.append(magnifyingGlass);
+    
+            const magnifyButton = document.getElementById("magnify");
+    
+            const addMagnifyingGlass = () => {
+            const bodyClone = document.body.cloneNode(true);
+            bodyClone.classList.add("body-clone");
+            bodyClone.style.top = "0px";
+            bodyClone.style.left = "0px";
+            magnifyingGlass.append(bodyClone);
+            document.body.append(handle);
+            };
+    
+            magnifyButton.addEventListener("click", addMagnifyingGlass);
+    
+            const moveMagnifyingGlass = (event) => {
+            let pointerX = event.pageX;
+            let pointerY = event.pageY;
+            //move magnifying glass with cursor
+            handle.style.left = pointerX - SIZE / 1.7 + "px";
+            handle.style.top = pointerY - SIZE / 1.7 + "px";
+            if (magnifyingGlass.children[0]) {
+                //align magnified document
+                let offsetX = (SIZE * Math.pow(SCALE, 2)) / 2 - pointerX * SCALE;
+                let offsetY = (SIZE * Math.pow(SCALE, 2)) / 2 - pointerY * SCALE;
+                magnifyingGlass.children[0].style.left = offsetX + "px";
+                magnifyingGlass.children[0].style.top = offsetY + "px";
+            }
+            };
+    
+            document.addEventListener("pointermove", moveMagnifyingGlass);
+    
+            const removeMagnifiyingGlass = (event) => {
+            magnifyingGlass.children[0].remove();
+            handle.remove();
+            };
+    
+            magnifyingGlass.addEventListener("dblclick", removeMagnifiyingGlass);
 
-    <!-- Magnifying glass, working na, WAG GAGALAWIN-->
-    <script>
-        const SCALE = 1.3; //magnification
-        const SIZE = 150; // diameter
-        const LENSE_OFFSET_X = SIZE / 10.2;
-        const LENSE_OFFSET_Y = SIZE / 10.2;
+            //Sa font size changer, wag po muna galawin
+            $(document).ready(function () {
+            $("#range-slider").on("input change", function () {
+                $(".font-changer").css("font-size", $(this).val() + "px");
+                $(".value").text($(this).val() + "px");
+            });
+            });
 
-        document.documentElement.style.setProperty("--scale", SCALE);
-        document.documentElement.style.setProperty("--size", SIZE + "px");
+            // sa pagbalik kapag naclik yung font changer hehe
+            $(document).ready(function () {
+                $("#range-slider").on("input change", function () {
+                    const fontSize = $(this).val() + "px";
+                    $(".font-changer").css("font-size", fontSize);
+                    $(".value").text(fontSize);
+                });
 
-        //create magnifying glass (lense)
-        const handle = document.createElement("div");
-        handle.classList.add("handle");
+                $("#reset-font-size").on("click", function () {
+                    const defaultFontSize = "16px";
+                    $(".font-changer").css("font-size", defaultFontSize);
+                    $("#range-slider").val(16);
+                    $(".value").text(defaultFontSize);
+                });
+            });
 
-        const magnifyingGlass = document.createElement("div");
-        magnifyingGlass.classList.add("magnifying-glass");
-        magnifyingGlass.style.top = LENSE_OFFSET_Y + "px";
-        magnifyingGlass.style.left = LENSE_OFFSET_X + "px";
+            //sa modes of screen, wag po munang galawin pls pls pls nagpapractice pa po T T
+            function setDefaultMode() {
+                const body = document.body;
+                body.classList.remove("dark-mode");
+                body.classList.remove("deuteranomaly-mode");
+                body.classList.remove("protanomaly-mode");
+                body.classList.remove("tritanomaly-mode");
+                localStorage.setItem("darkModeEnabled", "false");
+                localStorage.setItem("deuteranomalyModeEnabled", "false");
+                localStorage.setItem("protanomalyModeEnabled", "false");
+                localStorage.setItem("tritanomalyModeEnabled", "false");
+            }
 
-        handle.append(magnifyingGlass);
+            const defaultModeButton = document.getElementById("default");
+            defaultModeButton.addEventListener("click", setDefaultMode);
 
-        const magnifyButton = document.getElementById("magnify");
+            function toggleDarkMode() {
+                const body = document.body;
+                if (body.classList.contains("dark-mode")) {
+                    body.classList.remove("dark-mode");
+                    body.classList.remove("deuteranomaly-mode");
+                    body.classList.remove("protanomaly-mode");
+                    body.classList.remove("tritanomaly-mode");
+                    localStorage.setItem("darkModeEnabled", "false");
+                } else {
+                    body.classList.add("dark-mode");
+                    localStorage.setItem("darkModeEnabled", "true");
+                }
+            }
 
-        const addMagnifyingGlass = () => {
-        const bodyClone = document.body.cloneNode(true);
-        bodyClone.classList.add("body-clone");
-        bodyClone.style.top = "0px";
-        bodyClone.style.left = "0px";
-        magnifyingGlass.append(bodyClone);
-        document.body.append(handle);
-        };
+            const darkModeButton = document.getElementById("dark-mode");
+            darkModeButton.addEventListener("click", toggleDarkMode);
 
-        magnifyButton.addEventListener("click", addMagnifyingGlass);
+            function toggleDeuteranomalyMode() {
+                const body = document.body;
+                if (body.classList.contains('deuteranomaly-mode')) {
+                    body.classList.remove('deuteranomaly-mode');
+                    localStorage.setItem('deuteranomalyModeEnabled', 'false');
+                } else {
+                    body.classList.add('deuteranomaly-mode');
+                    localStorage.setItem('deuteranomalyModeEnabled', 'true');
+                }
+            }
 
-        const moveMagnifyingGlass = (event) => {
-        let pointerX = event.pageX;
-        let pointerY = event.pageY;
-        //move magnifying glass with cursor
-        handle.style.left = pointerX - SIZE / 1.7 + "px";
-        handle.style.top = pointerY - SIZE / 1.7 + "px";
-        if (magnifyingGlass.children[0]) {
-            //align magnified document
-            let offsetX = (SIZE * Math.pow(SCALE, 2)) / 2 - pointerX * SCALE;
-            let offsetY = (SIZE * Math.pow(SCALE, 2)) / 2 - pointerY * SCALE;
-            magnifyingGlass.children[0].style.left = offsetX + "px";
-            magnifyingGlass.children[0].style.top = offsetY + "px";
-        }
-        };
+            const deuteranomalyButton = document.getElementById('deuteranomaly');
+            deuteranomalyButton.addEventListener('click', toggleDeuteranomalyMode);
 
-        document.addEventListener("pointermove", moveMagnifyingGlass);
+            function toggleProtanomalyMode() {
+                const body = document.body;
+                if (body.classList.contains('protanomaly-mode')) {
+                    body.classList.remove('protanomaly-mode');
+                    localStorage.setItem('protanomalyModeEnabled', 'false');
+                } else {
+                    body.classList.add('protanomaly-mode');
+                    localStorage.setItem('protanomalyModeEnabled', 'true');
+                }
+            }
 
-        const removeMagnifiyingGlass = (event) => {
-        magnifyingGlass.children[0].remove();
-        handle.remove();
-        };
+            const protanomalyButton = document.getElementById('protanomaly');
+            protanomalyButton.addEventListener('click', toggleProtanomalyMode);
 
-        magnifyingGlass.addEventListener("dblclick", removeMagnifiyingGlass);
-    </script>
+            function toggleTritanomalyMode() {
+                const body = document.body;
+                if (body.classList.contains('tritanomaly-mode')) {
+                    body.classList.remove('tritanomaly-mode');
+                    localStorage.setItem('tritanomalyModeEnabled', 'false');
+                } else {
+                    body.classList.add('tritanomaly-mode');
+                    localStorage.setItem('tritanomalyModeEnabled', 'true');
+                }
+            }
 
-    <%- include('footer') -%>
-</body>
+            const tritanomalyButton = document.getElementById('tritanomaly');
+            tritanomalyButton.addEventListener('click', toggleTritanomalyMode);
+
+            if (localStorage.getItem("darkModeEnabled") === "true") {
+                toggleDarkMode();
+            } else if (localStorage.getItem("deuteranomalyModeEnabled") === "true") {
+                toggleDeuteranomalyMode();
+            } else if (localStorage.getItem("protanomalyModeEnabled") === "true") {
+                toggleProtanomalyMode();
+            } else if (localStorage.getItem("tritanomalyModeEnabled") === "true") {
+                toggleTritanomalyMode();
+            } else {
+                setDefaultMode();
+            }
+        </script>
+    </body>
+    

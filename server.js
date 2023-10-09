@@ -9,22 +9,15 @@ const nodemailer = require ('nodemailer')
 const uuid = require ('uuid');
 const multer = require('multer');
 
-//nicomment ko muna kasi nagdedesign po aq huhu
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const DATABASE_URL = process.env.DATABASE_URL;
 
 const app = express();
 
-    const nodemailer = require ('nodemailer')
-    const uuid = require ('uuid');
-    const multer = require('multer');
-    
-    const { PrismaClient } = require('@prisma/client');
-    const prisma = new PrismaClient();
-    const DATABASE_URL = process.env.DATABASE_URL;
+const port = process.env.PORT || 3000;
 
-// //database connection
+//database connection
 async function connectToDatabase() {
     try {
       await prisma.$connect();
@@ -72,19 +65,12 @@ const upload = multer({
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }))
 
-    const port = process.env.PORT || 3000;
+app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, 'public/scripts')))
 
-    //this can be use for companies or organization
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user:'oshisoffline@gmail.com',
-            pass:'txxdvicihtvcgevy'
-        }
-    })
+app.use('/', router);
 
 app.get('/', (req, res) =>{
     res.render('welcomepage', { title : "SoundSend"});

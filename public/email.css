@@ -5,8 +5,13 @@
 }
 
 .email_padding {
+<<<<<<< HEAD
     padding-top: 100px;
     padding-bottom: 100px;
+=======
+    padding-top: 150px;
+    padding-bottom: 300px;
+>>>>>>> 29ddf0a4ec178579b86ba3a6602170bd34c49ba0
 }
 
 .email_custom label {

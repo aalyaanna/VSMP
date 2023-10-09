@@ -5,7 +5,6 @@
 
         <body>
             <!--Navigation bar-->
-<<<<<<< HEAD
             <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
                 <div class="container">
                   <a class="navbar-brand" href="/homepage"><span class="text-dark">Sound</span>Send</a>
@@ -14,12 +13,6 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     
-=======
-            <!-- OLD CODE
-                <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">SoundSend</a> <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
->>>>>>> 29ddf0a4ec178579b86ba3a6602170bd34c49ba0
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item">
@@ -27,7 +20,6 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-<<<<<<< HEAD
                                   Modes of Screen
                                 </a>
                                 <!-- Wait lang, tatapusin ko within the week -->
@@ -56,55 +48,10 @@
                                     <li><a class="dropdown-item" id="deuteranomaly">Deuteranomaly</a></li>
                                     <li><a class="dropdown-item" id="protanomaly">Protanomaly</a></li>
                                     <li><a class="dropdown-item" id="tritanomaly">Tritanomaly</a></li>
-=======
-                                Modes of Screen
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" value="default">Default</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" value="Deuteranomaly">Deuteranomaly</a></li>
-                                    <li><a class="dropdown-item" value="Protanomaly">Protanomaly</a></li>
-                                    <li><a class="dropdown-item" value="Tritanomaly">Tritanomaly</a></li>
-                                    <li><a class="dropdown-item" value="Tritanopia">Tritanopia</a></li>
->>>>>>> 29ddf0a4ec178579b86ba3a6602170bd34c49ba0
                                 </ul>
                             </li>
                         </ul>
                     </div>
-<<<<<<< HEAD
-=======
-                </div>
-            </nav> -->
-    
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-                <div class="container">
-                  <a class="navbar-brand" href="#"><span class="text-dark">Sound</span>Send</a>
-        
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" id="magnify">Magnifier</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Modes of Screen
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" value="default">Default</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" value="Deuteranomaly">Deuteranomaly</a></li>
-                                    <li><a class="dropdown-item" value="Protanomaly">Protanomaly</a></li>
-                                    <li><a class="dropdown-item" value="Tritanomaly">Tritanomaly</a></li>
-                                    <li><a class="dropdown-item" value="Tritanopia">Tritanopia</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
->>>>>>> 29ddf0a4ec178579b86ba3a6602170bd34c49ba0
                     </div>
                 </nav>
         
@@ -114,17 +61,12 @@
                     <div class="m-3">
                         <div id="notification" name="notification" class="notification text-center d-flex justify-content-center align-items-center"></div>
                             <div class> 
-<<<<<<< HEAD
                                 <a type="button" class="btn btn-back email_btn" href="/homepage"><i class="bi bi-caret-left-fill"></i>  Back</a>
-=======
-                                <a type="button" class="btn btn-back" href="/homepage"><i class="bi bi-caret-left-fill"></i>  Back</a>
->>>>>>> 29ddf0a4ec178579b86ba3a6602170bd34c49ba0
                             </div> 
                         </div>
                     <br><br>
                         <form id="emailForm" action="/send-email" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
-<<<<<<< HEAD
                             <label for="exampleFormControlInput1" class="form-label font-changer">From:</label>
                             <input type="email" class="form-control font-changer" name="userEmailAddress" id="userEmailAddress" value="oshisoffline@gmail.com" readonly>
                         </div>
@@ -147,30 +89,6 @@
                             </div>
                             <div class="col-6 text-end">
                                 <button id="startSpeechRecognition" class="btn btn-speech font-changer">
-=======
-                            <label for="exampleFormControlInput1" class="form-label">From:</label>
-                            <input type="email" class="form-control" name="userEmailAddress" id="userEmailAddress" value="oshisoffline@gmail.com" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">To:</label>
-                            <input type="email" class="form-control" name="recipientEmailAddress" id="recipientEmailAddress" placeholder="example@gmail.com" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Subject:</label>
-                            <input type="text" class="form-control" name="subjectEmail" id="subjectEmail">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Body:</label>
-                            <textarea class="form-control" name="bodyEmail" id="bodyEmail" rows="3"></textarea>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-6">
-                                <button type="button" id="attachFileButton" class="btn btn-attach"><i class="bi bi-folder-plus"></i>&nbsp;&nbsp;&nbsp;Attach Files</button>
-                                <input type="file" name="attachment" id="fileInput" style="position: absolute; top: -9999px;">
-                            </div>
-                            <div class="col-6 text-end">
-                                <button id="startSpeechRecognition" class="btn btn-speech">
->>>>>>> 29ddf0a4ec178579b86ba3a6602170bd34c49ba0
                                     <i class="bi bi-mic-fill"></i> Activate Speech Recognition
                                 </button>
                             </div>
@@ -178,17 +96,10 @@
                         <!-- notification alert for file uploading -->
                         <div class="row mb-3">
                             <div class="col-md-12 text-end">
-<<<<<<< HEAD
                                 <div id="fileUploadedAlert" class="alert alert-success d-none font-changer" role="alert">
                                     File uploaded successfully!
                                 </div>
                                 <div id="noFileUploadedAlert" class="alert alert-warning d-none font-changer" role="alert">
-=======
-                                <div id="fileUploadedAlert" class="alert alert-success d-none" role="alert">
-                                    File uploaded successfully!
-                                </div>
-                                <div id="noFileUploadedAlert" class="alert alert-warning d-none" role="alert">
->>>>>>> 29ddf0a4ec178579b86ba3a6602170bd34c49ba0
                                     No file uploaded.
                                 </div>
                             </div>
@@ -196,11 +107,7 @@
                         <div id="fileNameContainer" class="mt-2"></div>
                         <div class="row">
                         <div class="col-md-12 text-center">
-<<<<<<< HEAD
                             <button type="submit" class="btn btn-send font-changer">Send Email</button>
-=======
-                            <button type="submit" class="btn btn-send">Send Email</button>
->>>>>>> 29ddf0a4ec178579b86ba3a6602170bd34c49ba0
                         </div>
                         </div>
                         </form>
@@ -269,7 +176,6 @@
     
     magnifyingGlass.addEventListener("dblclick", removeMagnifiyingGlass);
 
-<<<<<<< HEAD
     //Sa font size changer, wag po muna galawin
     $(document).ready(function () {
         $("#range-slider").on("input change", function () {
@@ -381,8 +287,6 @@
                 setDefaultMode();
             }
 
-=======
->>>>>>> 29ddf0a4ec178579b86ba3a6602170bd34c49ba0
     //declaring variables for handing email sending, including attach file function
     const emailForm = document.getElementById('emailForm');
     const notificationElement = document.getElementById('notification');

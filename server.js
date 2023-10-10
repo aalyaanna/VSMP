@@ -29,7 +29,7 @@ async function connectToDatabase() {
   
   connectToDatabase();
 
-//transporter for gmail authentication link
+//transporter for gmail authentication link, change accessToken after expriration 
 const transport = nodemailer.createTransport({
     service:'gmail',
     auth:{

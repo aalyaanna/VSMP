@@ -11,12 +11,10 @@
 ``` npm i nodemailer ```
 ###
 ``` npm i multer ```
-### 
-```npm i prisma --save-dev```
-###
-```npx prisma```
 ###
 ```npx prisma init```
+###
+```npx prisma generate```
 
 ### Log in into the official gmail account of the website.
     email: soundsendofficial@gmail.com
@@ -36,6 +34,9 @@
 
 ### In the root directory of our project, create a file ``` .env ``` and add the database url, make sure to remove the <> when you provide your account name, password, and db name.
     DATABASE_URL="mongodb+srv://<account name>:<password>@cluster0.534kjgp.mongodb.net/<db name>"
+
+### Then type in the terminal,
+``` prisma db push ```
     
 ### For this part in server.js, change the access token with the one provided by the OAuth you generated using the official gmail account of the website.
     const transport = nodemailer.createTransport({

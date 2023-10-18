@@ -20,7 +20,7 @@
     email: soundsendofficial@gmail.com
     pass: soundsendofficial01
 
-### For the database, create your own database then create a model named ``` Emails ```,
+### For the database, create your own database in MongoDB then create a model named ``` Emails ```,
 
 ### Go to schema.prisma and add this,
     model Emails {

@@ -5,7 +5,7 @@
 ###
 ``` npm i ejs ```
 
-Install these packages,
+# Install these packages,
 ``` npm i uuid ```
 ###
 ``` npm i nodemailer ```

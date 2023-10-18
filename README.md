@@ -59,7 +59,7 @@
 
 PROGRESS:
 - Magnifier (WORKING)
-- Modes of Screen (WORKING - ongoing checking)
+- Modes of Screen (WORKING/ON GOING CHECKING)
 
 - Magic Auth Link (WORKING)
 - Email Layout (DONE)
@@ -71,7 +71,7 @@ PROGRESS:
   
     c. Speech-to-Text (WORKING)
   
-    d. Voice Commands
+    d. Voice Commands (ON GOING)
 
 - Overall Design
-- Database for handling user email address.
+- Database for handling user email address. (WORKING/ON GOING CHECKING)

@@ -350,6 +350,22 @@
     });
 
     //speech to text recognition function, using javascript only
+function capitalizeFirstLetter(transcript) {
+    return transcript.charAt(0).toUpperCase() + transcript.slice(1);
+}
+
+function addPunctuation(transcript) {
+    const lastChar = transcript.trim().slice(-1);
+    if (lastChar === 'question mark') {
+        return '?';
+    } else if (lastChar === 'period') {
+        return '.';
+    } else if (lastChar === 'comma') {
+        return ',';
+    } else {
+        return transcript;
+    }
+}
     let recognition;
     let timeout;
 
@@ -372,7 +388,9 @@
             for (let i = event.resultIndex; i < event.results.length; ++i) {
                 if (event.results[i].isFinal) {
                     const transcript = event.results[i][0].transcript;
-                    bodyEmailTextarea.value += transcript;
+                    transcript = addPunctuation(transcript);
+                    transcript = capitalizeFirstLetter(transcript);
+                    bodyEmailTextarea.value += modifiedTranscript;
                     console.log('Transcript:', transcript);
                 } else {
                     interimTranscript += event.results[i][0].transcript;
@@ -396,13 +414,13 @@
     });
     
     //transcribing "question mark" as a symbol not as an actual word
-    function processTranscript(transcript) {
-        if (transcript.toLowerCase().includes('question mark')) {
-            return '?';
-        } else {
-            return transcript + ' ';
-        }
-    }
+    // function processTranscript(transcript) {
+    //     if (transcript.toLowerCase().includes('question mark')) {
+    //         return '?';
+    //     } else {
+    //         return transcript + ' ';
+    //     }
+    // }
 
     //click a certain field for the computer to read its content, 
     //to be edited

@@ -34,7 +34,7 @@
 ### In the datasource db, change the provider into mongodb,
     provider = "mongodb"
 
-### In the root directory of our project, create a file ``` .env ``` and add this, make sure to remove the <> when you provide your account name, password, and db name.
+### In the root directory of our project, create a file ``` .env ``` and add the database url, make sure to remove the <> when you provide your account name, password, and db name.
     DATABASE_URL="mongodb+srv://<account name>:<password>@cluster0.534kjgp.mongodb.net/<db name>"
     
 ### For this part in server.js, change the access token with the one provided by the OAuth you generated using the official gmail account of the website.

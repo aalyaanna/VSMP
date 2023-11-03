@@ -43,7 +43,7 @@
                                 <li><hr class="dropdown-divider" style="border-color:black;"></li>
                                 <li><a class="dropdown-item" value="ResetFontSize" id="reset-font-size">Reset Font Size</a></li>
                                 <li><hr class="dropdown-divider" style="border-color:black;"></li>
-                                <li><span class="dropdown-item-text">Colorblind Options</span></li>
+                                <li><span class="dropdown-item-text" style="color:#fca311;">Colorblind Options</span></li>
                                 <li><a class="dropdown-item" id="deuteranomaly">Deuteranomaly</a></li>
                                 <li><a class="dropdown-item" id="protanomaly">Protanomaly</a></li>
                                 <li><a class="dropdown-item" id="tritanomaly">Tritanomaly</a></li>
@@ -74,19 +74,31 @@
                             <h2>Significance of the Project</h2>
                             <p class="font-changer">Our project holds immense significance for various stakeholders:</p>
                             <ul class="font-changer">
-                                <li>Visually Impaired: SoundSend equips visually impaired employees with the tools to enhance their work performance by providing voice-assisted email creation, sending, and reading capabilities.</li>
-                                <li>Business Organizations: We help businesses foster inclusivity by enabling better communication and collaboration with visually impaired employees, ultimately breaking digital barriers.</li>
-                                <li>Future Researchers: SoundSend serves as a valuable reference for future research endeavors, offering insights into the integration of NLP voice recognition in email systems to support the visually impaired.</li>
+                                <li><b>Visually Impaired:</b> SoundSend equips visually impaired employees with the tools to enhance their work performance by providing voice-assisted email creation, sending, and reading capabilities.</li>
+                                <li><b>Business Organizations:</b> We help businesses foster inclusivity by enabling better communication and collaboration with visually impaired employees, ultimately breaking digital barriers.</li>
+                                <li><b>Future Researchers:</b> SoundSend serves as a valuable reference for future research endeavors, offering insights into the integration of NLP voice recognition in email systems to support the visually impaired.</li>
                             </ul>
                         
                             <h2>Scope and Limitations</h2>
                             <p class="font-changer">SoundSend focuses on developing a web application that utilizes NLP Speech Recognition and Speech-To-Text (STT) technology to improve the work performance of employees with visual impairments, including those with low vision and color vision deficiency (CVD). Our application primarily facilitates email-related tasks such as composing, reading, and sending emails, with the option for manual or voice-command execution. While we integrate bilingual functionality for English and Filipino languages, we exclusively target Gmail interactions. It's important to note that security measures for user credentials storage are not a primary focus. Our project will be completed within the summer and first semester of the year 2023-2024. SoundSend is committed to making email communication accessible to all.</p>
+                        
+                            <h2>SoundSend Extension</h2>
+                            <p class="font-changer">This powerful tool offers a range of features designed to make web content more accessible and comfortable for all users.<br>
+                                Go to <a type="button" href="/email">Download SoundSend Extension</a> to download our extension.
+                            </p>
+                            <ul class="font-changer">
+                                <li><b>Magnifier:</b> Zoom in on any web page with our intuitive magnifier tool. Get a closer look at text, images, and interactive elements with ease.</li>
+                                <li><b>Font Changer:</b> Take control of your reading experience by customizing the font on any website. Choose from a selection of fonts to find the one that suits you best.</li>
+                                <li><b>Screen Modes:</b> Catering to users with different visual needs, our extension provides three distinct screen modes: Colorblind Mode, Dark Mode, and Default Mode</li>
+                            </ul>
+                        
                         </p>
                     </div>
                     <br>
                     <div class="homepage_btn text-center mt-5 mb-5">
                         <a type="button" class="btn mx-5 font-changer email_btn" href="/email">Compose <br> Email</a>
-                        <button type="button" class="btn mx-5 font-changer">Activate Speech <br> Recognition</button>
+                        <button type="button" id="activateSpeechRecognition" class="btn mx-5 font-changer">Activate Voice <br> Command</button>
+                        <!-- <button type="button" class="btn mx-5 font-changer" download="download_extension.zip">Download SoundSend <br> Extension</button> -->
                     </div>
                 </div>
             </div>
@@ -264,5 +276,20 @@
                 setDefaultMode();
             }
         </script>
+<script>
+//voice command for opening the email composition page
+document.getElementById('activateSpeechRecognition').addEventListener('click', function() {
+  if (annyang) {
+    const commands = {
+      'compose': function() {
+        window.location.href = '/email';
+      }
+    };
+
+    annyang.addCommands(commands);
+    annyang.start();
+  }
+});
+</script>
     </body>
     

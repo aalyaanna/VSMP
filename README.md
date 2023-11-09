@@ -58,7 +58,7 @@
 
 PROGRESS:
 - Magnifier (WORKING)
-- Modes of Screen (WORKING/ON GOING CHECKING)
+- Modes of Screen (WORKING)
 
 - Magic Auth Link (WORKING)
 - Email Layout (DONE)

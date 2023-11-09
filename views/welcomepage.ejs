@@ -98,7 +98,16 @@
                     
                         <div class="col-lg-8 col-md-12 col-12 ">
                             <div class="about-text">
-                                <h2>What is SoundSend?</h2><br>
+                                <h2>What is SoundSend?&#160<button id="playButton" onclick="playVoiceover()" class="btn btn-info">
+                                    <i class="bi bi-volume-up"></i></h2></button>
+                                    <audio id="playAudio" style="display: none;">
+                                        <source src="/audio/voiceover-sample.mp3" type="audio/mpeg">
+                                    </audio>
+                                
+                                <!-- autoplay voiceover -->
+                                    <!-- <h2>What is SoundSend?</h2>
+                                        <audio src="/audio/voiceover-sample.mp3" type="audio/mpeg" autoplay></audio> -->
+
                                 <p align="justify">SoundSend is an innovative capstone project that utilizes Natural Language Processing (NLP) voice recognition and Speech-To-Text (STT) technology to empower visually impaired individuals, particularly those with low vision and color vision deficiency (CVD). It streamlines email tasks, such as composing, reading, and sending emails with voice commands, improving workplace performance and inclusivity. This project also serves as a valuable reference for future researchers in the field. SoundSend focuses on Gmail interactions, offers bilingual functionality, and is set to be executed in the 2023-2024 academic year, marking a significant step toward enhancing digital accessibility.</p>
                             </div>
                         </div>
@@ -309,8 +318,7 @@
                 </div>
               </div>
             </div>
-          </div>
-          
+          </div>        
     
     <%- include('footer') -%>
     
@@ -400,6 +408,13 @@
             modal.style.display = 'none';
         }
         });
+    
+    //function to play the voiceover
+    function playVoiceover() {
+        var voiceoverElement = document.getElementById('playAudio');
+        voiceoverElement.play();
+    }
+
     </script>
     </body>
     

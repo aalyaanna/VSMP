@@ -73,8 +73,7 @@ PROGRESS:
     d. Voice Commands (ON GOING)
 
 - Overall Design
-- Database for handling user email address. (WORKING/ON GOING CHECKING)
-- SS Extension
+- Database for handling user email address. (DONE)
   
     a. Magnifier (WORKING)
   

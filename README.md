@@ -76,9 +76,9 @@ PROGRESS:
 - Database for handling user email address. (WORKING/ON GOING CHECKING)
 - SS Extension
   
-    a. Magnifier
+    a. Magnifier (WORKING)
   
-    b. Modes of Screen (WORKING/ON GOING CHECKING)
+    b. Modes of Screen (WORKING)
   
-    c. Font Changer (WORKING/ON GOING CHECKING)
+    c. Font Changer (WORKING)
   

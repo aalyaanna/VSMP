@@ -7,7 +7,7 @@
             <!--Navigation bar-->
             <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
                 <div class="container">
-                  <a class="navbar-brand" href="/homepage"><span class="text-dark">Sound</span>Send</a>
+                  <a class="navbar-brand" href="/homepage"><span class="text-dark">Eye</span>Daptify</a>
         
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -353,52 +353,78 @@
 function capitalizeFirstLetter(transcript) {
     return transcript.charAt(0).toUpperCase() + transcript.slice(1);
 }
-    let recognition;
-    let timeout;
 
-    document.addEventListener('DOMContentLoaded', () => {
-    const bodyEmailTextarea = document.getElementById('bodyEmail');
+document.addEventListener('DOMContentLoaded', () => {
+    const fields = document.querySelectorAll('.form-control');
+    let activeField;
+    let recognition;
+    let paragraphTimeout;
+    let recognitionTimeout;
+
+    fields.forEach(field => {
+        field.addEventListener('focus', function () {
+            activeField = this;
+        });
+    });
+
     const startSpeechRecognitionButton = document.getElementById('startSpeechRecognition');
-    startSpeechRecognitionButton.addEventListener('click', function() {
+
+    startSpeechRecognitionButton.addEventListener('click', function () {
+        if (recognition && recognition.running) {
+            recognition.stop();
+            startSpeechRecognitionButton.disabled = false;
+        } else {
+            startSpeechRecognition();
+        }
+    });
+
+    function startSpeechRecognition() {
+        recognition = new webkitSpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.lang = 'en-US';
+
+        recognition.addEventListener('result', function (event) {
+            clearTimeout(paragraphTimeout);
+            clearTimeout(recognitionTimeout);
+
+            let interimTranscript = '';
+
+            for (let i = event.resultIndex; i < event.results.length; ++i) {
+                if (event.results[i].isFinal) {
+                    const transcript = event.results[i][0].transcript;
+                    const processedTranscript = processTranscript(transcript);
+                    activeField.value += capitalizeFirstLetter(processedTranscript);
+                    console.log('Transcript:', transcript);
+                } else {
+                    interimTranscript += event.results[i][0].transcript;
+                }
+            }
+
+            //detect pause from speech to create a new paragraph
+            paragraphTimeout = setTimeout(() => {
+                activeField.value += '\n\n';
+            }, 5000); //5 seconds timeout
+
+            //detect pause to stop speech recognition
+            recognitionTimeout = setTimeout(() => {
+                recognition.stop();
+                startSpeechRecognitionButton.disabled = false;
+            }, 20000); //20 seconds timeout
+        });
+
+            recognition.addEventListener('end', function () {
+                startSpeechRecognitionButton.disabled = false;
+            });
+
             recognition.start();
             startSpeechRecognitionButton.disabled = true;
             if (annyang) {
                 annyang.abort();
             }
-    })
-
-    let recognition = new webkitSpeechRecognition();
-
-    recognition.continuous = true;
-    recognition.interimResults = true;
-    recognition.lang = 'en-US';
-
-    recognition.onresult = function(event) {
-    clearTimeout(timeout);
-    let interimTranscript = '';
-
-            for (let i = event.resultIndex; i < event.results.length; ++i) {
-            if (event.results[i].isFinal) {
-                const transcript = event.results[i][0].transcript;
-                bodyEmailTextarea.value += capitalizeFirstLetter(transcript);
-                console.log('Transcript:', transcript);
-            } else {
-                    interimTranscript += event.results[i][0].transcript;
-                }
-            }
-
-    //detect pause from speech to create a new paragraph
-    timeout = setTimeout(() => {
-            bodyEmailTextarea.value += '\n\n';
-        }, 5000);
-    };
-    
-    recognition.onend = function() {
-            startSpeechRecognitionButton.disabled = false;
-    };
-
+        }
     });
-    
+
     //transcribing punctuation marks as symbols not as an actual word
     function processTranscript(transcript) {
         let processedTranscript = transcript.toLowerCase();
@@ -414,46 +440,52 @@ function capitalizeFirstLetter(transcript) {
 
     //click a certain field for the computer to read its content, 
     //to be edited
-    document.addEventListener('DOMContentLoaded', () => {
-    const fields = document.querySelectorAll('.form-control');
+    // document.addEventListener('DOMContentLoaded', () => {
+    // const fields = document.querySelectorAll('.form-control');
 
-    fields.forEach(field => {
-        field.addEventListener('click', function() {
-            const content = this.value;
-            speak(content);
-        });
-    });
+    // fields.forEach(field => {
+    //     field.addEventListener('click', function() {
+    //         const content = this.value;
+    //         speak(content);
+    //     });
+    // });
 
-    function speak(content) {
-        const synth = window.speechSynthesis;
-        const utterance = new SpeechSynthesisUtterance(content);
-        const voices = synth.getVoices();
-        const femaleVoice = voices.find(voice => voice.name.includes('Female'));
+    // function speak(content) {
+    //     const synth = window.speechSynthesis;
+    //     const utterance = new SpeechSynthesisUtterance(content);
+    //     const voices = synth.getVoices();
+    //     const femaleVoice = voices.find(voice => voice.name.includes('Female'));
 
-        utterance.voice = femaleVoice;
-        synth.speak(utterance);
-        }
-    });
-
+    //     utterance.voice = femaleVoice;
+    //     synth.speak(utterance);
+    //     }
+    // });
     </script>
+
+<!--script for voice command function-->
 <script>
 
 if (annyang) {
   const commands = {
-    //for sending email
     'send': function() {
+      console.log('Voice command detected: send');
       const emailForm = document.getElementById('emailForm');
       emailForm.dispatchEvent(new Event('submit'));
     },
-    //for opening the computer files
     'attach': function() {
+      console.log('Voice command detected: attach');
       const attachFileButton = document.getElementById('attachFileButton');
       attachFileButton.click();
     },
-    //for reading the email body content
     'read': function() {
-      const content = document.getElementById('bodyEmail').value;
-      speak(content);
+      console.log('Voice command detected: read');
+      const fields = document.querySelectorAll('.form-control');
+
+      fields.forEach(field => {
+        const content = field.value;
+        const fieldType = getFieldType(field);
+        speak(`${fieldType}: ${content}`);
+      });
     }
   };
 
@@ -462,14 +494,26 @@ if (annyang) {
 }
 
 function speak(content) {
-        const synth = window.speechSynthesis;
-        const utterance = new SpeechSynthesisUtterance(content);
-        const voices = synth.getVoices();
-        const femaleVoice = voices.find(voice => voice.name.includes('Female'));
+  const synth = window.speechSynthesis;
+  const utterance = new SpeechSynthesisUtterance(content);
+  const voices = synth.getVoices();
+  const femaleVoice = voices.find(voice => voice.name.includes('Female'));
 
-        utterance.voice = femaleVoice;
-        synth.speak(utterance);
+  utterance.voice = femaleVoice;
+  synth.speak(utterance);
 }
+
+function getFieldType(field) {
+  const label = field.labels[0];
+  if (label) {
+    return label.textContent;
+  } else if (field.name) {
+    return field.name;
+  } else {
+    return 'Field';
+  }
+}
+
 </script>  
     </body>
     

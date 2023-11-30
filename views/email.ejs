@@ -84,7 +84,10 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-6">
-                                <button type="button" id="attachFileButton" class="btn btn-attach font-changer"><i class="bi bi-folder-plus"></i>&nbsp;&nbsp;&nbsp;Attach Files</button>
+                                <!-- <button type="button" id="visibleAttachButton" class="btn btn-attach font-changer"><i class="bi bi-folder-plus"></i>&nbsp;&nbsp;&nbsp;Attach Files</button> -->
+                                <label for="fileInput" id="visibleAttachButton" class="btn btn-attach font-changer">
+                                    <i class="bi bi-folder-plus"></i>&nbsp;&nbsp;&nbsp;Attach Files
+                                </label>
                                 <input type="file" name="attachment" id="fileInput" style="position: absolute; top: -9999px;" class="font-changer">
                             </div>
                             <!-- <div class="col-6 text-end">
@@ -338,12 +341,17 @@
     
     const fileNameContainer = document.getElementById('fileNameContainer');
     
-    attachFileButton.addEventListener('click', () => {
+    // attachFileButton.addEventListener('click', () => {
+    //     fileInput.click();
+    // });
+
+    document.getElementById('visibleAttachButton').addEventListener('click', function() {
+        const fileInput = document.getElementById('fileInput');
         fileInput.click();
     });
     
     //showing the file name, and notification alert for file uploading
-    fileInput.addEventListener('change', () => {
+    fileInput.addEventListener('change', function() {
         const attachment = fileInput.files[0];
         if (attachment) {
             const fileName = attachment.name;
@@ -495,8 +503,8 @@ if (annyang) {
     },
     'attach': function() {
       console.log('Voice command detected: attach');
-      const attachFileButton = document.getElementById('attachFileButton');
-      attachFileButton.click();
+      const visibleAttachButton= document.getElementById('visibleAttachButton');
+      visibleAttachButton.click();
     },
     'read': function() {
       console.log('Voice command detected: read');

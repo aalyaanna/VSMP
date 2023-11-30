@@ -87,11 +87,11 @@
                                 <button type="button" id="attachFileButton" class="btn btn-attach font-changer"><i class="bi bi-folder-plus"></i>&nbsp;&nbsp;&nbsp;Attach Files</button>
                                 <input type="file" name="attachment" id="fileInput" style="position: absolute; top: -9999px;" class="font-changer">
                             </div>
-                            <div class="col-6 text-end">
+                            <!-- <div class="col-6 text-end">
                                 <button id="startSpeechRecognition" class="btn btn-speech font-changer" title="Activate Speech-to-Text?">
                                     <i class="bi bi-mic-fill"></i> Activate Speech
                                 </button>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- notification alert for file uploading -->
                         <div class="row mb-3">
@@ -114,10 +114,49 @@
                     </div>
                 </div>
             </section>
+
+        <!-- modal for explaning the voice commands and speech-to-text usage -->
+            <div class="modal fade" id="gmailModal" tabindex="-1" aria-labelledby="gmailModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="gmailModalLabel">Speech Recognition</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                
+                            <p>Welcome! You can compose emails manually or using Seech Recognition.</p>
+                            <ul class="font-changer">
+                                <li>Click a certain field when using the Speech Recognition.</li>
+                            </ul>
+                            <p>To activate speech recognition, click the <b>Activate</b> button to start speech recognition.</p>
+                            <p>Or, if you want to continue using voice command, click the <b>Close</b> button.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="activateSpeechRecognition" class="btn btn-secondary" data-bs-dismiss="modal">Activate</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
     
             <%- include('footer') -%>
     
     <script>
+
+        $(document).ready(function() {
+            const scrollThreshold = 0.2 * $(document).height();
+            function showModal() {
+                $('#gmailModal').modal('show');
+                $(window).off('scroll', checkScroll);
+            }
+            function checkScroll() {
+                if ($(window).scrollTop() >= scrollThreshold) {
+                    showModal();
+                }
+            }
+            $(window).on('scroll', checkScroll);
+        });
 
     //magnifying glass
     const SCALE = 1.3; //magnification
@@ -379,6 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function startSpeechRecognition() {
+    if ('webkitSpeechRecognition' in window) {
         recognition = new webkitSpeechRecognition();
         recognition.continuous = true;
         recognition.interimResults = true;
@@ -422,8 +462,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (annyang) {
                 annyang.abort();
             }
+        } else {
+            console.error('Speech recognition is not supported in this browser.');
         }
-    });
+    }
 
     //transcribing punctuation marks as symbols not as an actual word
     function processTranscript(transcript) {
@@ -437,30 +479,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return transcript + ' ';
         }
     }
+});
 
-    //click a certain field for the computer to read its content, 
-    //to be edited
-    // document.addEventListener('DOMContentLoaded', () => {
-    // const fields = document.querySelectorAll('.form-control');
-
-    // fields.forEach(field => {
-    //     field.addEventListener('click', function() {
-    //         const content = this.value;
-    //         speak(content);
-    //     });
-    // });
-
-    // function speak(content) {
-    //     const synth = window.speechSynthesis;
-    //     const utterance = new SpeechSynthesisUtterance(content);
-    //     const voices = synth.getVoices();
-    //     const femaleVoice = voices.find(voice => voice.name.includes('Female'));
-
-    //     utterance.voice = femaleVoice;
-    //     synth.speak(utterance);
-    //     }
-    // });
-    </script>
+</script>
 
 <!--script for voice command function-->
 <script>

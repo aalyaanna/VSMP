@@ -84,17 +84,11 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-6">
-                                <!-- <button type="button" id="visibleAttachButton" class="btn btn-attach font-changer"><i class="bi bi-folder-plus"></i>&nbsp;&nbsp;&nbsp;Attach Files</button> -->
                                 <label for="fileInput" id="visibleAttachButton" class="btn btn-attach font-changer">
                                     <i class="bi bi-folder-plus"></i>&nbsp;&nbsp;&nbsp;Attach Files
                                 </label>
                                 <input type="file" name="attachment" id="fileInput" style="position: absolute; top: -9999px;" class="font-changer">
                             </div>
-                            <!-- <div class="col-6 text-end">
-                                <button id="startSpeechRecognition" class="btn btn-speech font-changer" title="Activate Speech-to-Text?">
-                                    <i class="bi bi-mic-fill"></i> Activate Speech
-                                </button>
-                            </div> -->
                         </div>
                         <!-- notification alert for file uploading -->
                         <div class="row mb-3">
@@ -341,12 +335,7 @@
     
     const fileNameContainer = document.getElementById('fileNameContainer');
     
-    // attachFileButton.addEventListener('click', () => {
-    //     fileInput.click();
-    // });
-
-    document.getElementById('visibleAttachButton').addEventListener('click', function() {
-        const fileInput = document.getElementById('fileInput');
+    visibleAttachButton.addEventListener('click', () => {
         fileInput.click();
     });
     

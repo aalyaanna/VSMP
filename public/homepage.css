@@ -45,3 +45,16 @@
     background-color: #fca311;
     color: black;
 }
+
+.modal-body p {
+    font-size: 18px;
+}
+
+.modal-body ul {
+    font-size: 18px;
+}
+
+.modal-body li {
+    font-size: 18px;
+}
+

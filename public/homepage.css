@@ -1,23 +1,54 @@
 /* lahat ng nasa homepage.ejs na design andito */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
 * {
-	font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #homepage_quote {
-    color: #fca311;
     font-weight: bolder;
     padding-bottom: 20px;
 }
 
 .home_padding {
     padding-top: 200px;
-    padding-bottom: 100px;
+    background-color: #fef9f3;
 }
 
-.paragraph_text {
-    font-size: large;
-    text-align: justify;
+.objectives-text {
+    padding-top: 50px;
+}
+
+.objectives-text p {
+    font-size: larger;
+}
+
+.vcommands {
+    background-color: #fef9f3;
+    color: black;
+    padding: 80px;
+}
+
+.vcommands .card-body i {
+    font-size: 50px;
+    color: white !important;
+}
+
+.vcommands .card-title {
+    font-weight: bold;
+    color: white !important;
+}
+
+.vcommands .card {
+    background-color: #6E2C00;
+    color: white;
+    margin-bottom: 30px;
+
+
+    border-radius: 30px !important;
+    z-index: 0;
+    overflow: hidden;
+    border: 1px solid #fca311;
 }
 
 .homepage_btn a {
@@ -44,4 +75,16 @@
 .homepage_btn button:hover {
     background-color: #fca311;
     color: black;
+}
+
+.modal-body p {
+    font-size: 18px;
+}
+
+.modal-body ul {
+    font-size: 18px;
+}
+
+.modal-body li {
+    font-size: 18px;
 }

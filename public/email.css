@@ -1,7 +1,8 @@
 /* lahat ng nasa email.ejs na design andito */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
 * {
-	font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .email_padding {
@@ -41,6 +42,18 @@
     color: black;
     font-size: large;
     font-weight: bold;
+}
+
+.modal-body p {
+    font-size: 18px;
+}
+
+.modal-body ul {
+    font-size: 18px;
+}
+
+.modal-body li {
+    font-size: 18px;
 }
 
 .email_custom button:hover {

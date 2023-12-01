@@ -1,47 +1,45 @@
 /* welcomepage starter design, lahat ng nasa welcomepage.ejs na design andito */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
-* {
-	font-family: 'Montserrat', sans-serif;
-}
 
-/* #welcome_quote{
-    color: #233169;
-    font-weight: bolder;
-} */
+* {
+    font-family: 'Montserrat', sans-serif;
+}
 
 .welcome-banner {
     background-color: #fca311;
 }
 
 .carousel-item {
-	height: 50vh;
+    height: 50vh;
 }
 
 .carousel-caption {
     color: black;
-	bottom: 75px;
-	z-index: 2;
+    bottom: 75px;
+    z-index: 2;
 }
+
 .carousel-caption h5 {
-	font-size: 45px;
+    font-size: 45px;
     font-weight: bold;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	margin-top: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 25px;
 }
+
 .carousel-caption p {
-	width: 100%;
-	margin: auto;
-	font-size: 18px;
-	line-height: 1.9;
-} 
+    width: 100%;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.9;
+}
 
 .quote-padding {
     padding: 200px 0;
 }
 
 .section-padding {
-	padding: 50px;
+    padding: 50px;
 }
 
 .section-padding h2 {
@@ -56,7 +54,7 @@
     font-size: larger;
 }
 
-.card-title{
+.card-title {
     font-weight: bold;
 }
 
@@ -66,35 +64,41 @@
     margin-bottom: 30px;
 
 
-    border-radius: 4px;
+    border-radius: 30px !important;
     z-index: 0;
     overflow: hidden;
-    border: 1px solid #fca311;
-  
-    &:hover {
-      transition: all 0.2s ease-out;
-      box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
-      top: -4px;
-      border: 1px solid #cccccc;
-      background-color: white;
-    }
-  
-    &:hover:before {
-      transform: scale(2.15);
-    }
-  }
-  
+    border: 1px solid #6E2C00;
 
-.services{
-    background-color: #fef9f3 ;
+    &:hover {
+        transition: all 0.2s ease-out;
+        box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+        top: -4px;
+        border: 1px solid #cccccc;
+        background-color: white;
+    }
+
+    &:hover:before {
+        transform: scale(2.15);
+    }
+}
+
+.card-body i,
+h3 {
+    color: #6E2C00 !important;
+}
+
+
+.services {
+    background-color: #fef9f3;
     color: black;
     padding: 80px;
 }
+
 .services .card-body i {
-	font-size: 50px;
+    font-size: 50px;
 }
 
-.accordion-button{
+.accordion-button {
     margin-bottom: 10px;
 }
 
@@ -102,13 +106,13 @@
     margin-top: 15px;
     padding: 25px;
     background: #fef9f3;
-    border-radius: 5px;
+    border-radius: 30px;
     box-shadow: 0 2px 25px -3px rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
     font-size: larger;
 }
 
-.accordion-item{
+.accordion-item {
     border: 0px;
 }
 
@@ -116,7 +120,7 @@
     font-size: larger;
 }
 
-.accordion-button:not(.collapsed){
+.accordion-button:not(.collapsed) {
     border: 0px;
     color: #fca311;
     background-color: #ffffff;
@@ -161,4 +165,10 @@
 .contact button:hover {
     background-color: #fca311;
     color: black;
+}
+
+/*font sa modals*/
+
+.modal-title {
+    font-weight: bolder;
 }

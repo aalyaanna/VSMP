@@ -26,8 +26,11 @@ const port = process.env.PORT || 3000;
 //     }
 //   }
 
+<<<<<<< HEAD
 //   connectToDatabase();
 
+=======
+>>>>>>> 5bca76f4af67e0f6b8127ab030106826b773b67d
 //transporter for gmail authentication link, change accessToken after expriration 
 const transport = nodemailer.createTransport({
     service: 'gmail',
@@ -208,6 +211,10 @@ app.post('/send-email', async (req, res) => {
     })
 })
 
+<<<<<<< HEAD
 app.listen(port, () => {
     console.log("Listening to the server on http://localhost:3000")
 });
+=======
+app.listen(port, ()=>{ console.log("Listening to the server on http://localhost:3000")});
+>>>>>>> 5bca76f4af67e0f6b8127ab030106826b773b67d

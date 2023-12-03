@@ -12,7 +12,6 @@ const isAuthenticated = (req, res, next) => {
         return res.send("Invalid link!");
     }
 
-    //once authenticated, remove the code from the user object to prevent reuse of the link
     user.magicCode = null;
     next();
 };
@@ -29,4 +28,7 @@ router.get('/email', isAuthenticated, (req, res) => {
     res.render('email');
 });
 
-module.exports = router;
+module.exports = {
+    router,
+    authenticatedUsers
+};

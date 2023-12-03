@@ -35,7 +35,7 @@ const transport = nodemailer.createTransport({
     auth:{
         type:'OAuth2',
         user: 'soundsendofficial@gmail.com',
-        accessToken: 'ya29.a0AfB_byCheS5EUZyQMIIOy-X8OUbr6oqXWOh7GG3pmIr1U3WTn9OSpSUMVrrOq73PCe63AQCZnfcRWiioA4YeoiegZQ9O_lwFuPQ6NpCKBTr9G9b4-aeDKZnxKXnWZaGXOKaJEeVCBezAaP_AIi_weciovgJ4h7HUxsGQaCgYKAWcSARISFQHGX2MiM6PGOxfZoTfBoXfSioo34A0171'
+        accessToken: 'ya29.a0AfB_byANzi20j0FOPGE2FI-ASrAWTi6uxaQ9NiFaLLE8gbFotYaF10fYiZ36tFc4G6xO7BFAKXoPJs4e2Tt_YZZoy3odYbY1y1D0zlA_T7_GdQ28wZvz6uEorwgUh5ZTJ6ecf7HGSN-0r8dyMsbgf67fBK1tRhYIxZPGaCgYKAaMSARISFQHGX2MicKyY_9V4SdFd3GxfBqidGA0171'
     }
 })
 

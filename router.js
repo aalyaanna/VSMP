@@ -6,14 +6,14 @@ const authenticatedUsers = [];
 //middleware to check authentication
 const isAuthenticated = (req, res, next) => {
     const { email, code } = req.query;
-    const user = authenticatedUsers.find((u) => u.email === email && u.magicCode === code);
+    const userIndex = authenticatedUsers.findIndex((u) => u.email === email && u.magicCode === code);
 
-    if (!user) {
+    if (userIndex !== -1) {
+        authenticatedUsers.splice(userIndex, 1);
+        next();
+    } else {
         return res.send("Invalid link!");
     }
-
-    user.magicCode = null;
-    next();
 };
 
 router.get('/homepage', isAuthenticated, (req, res) => {

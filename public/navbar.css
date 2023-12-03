@@ -186,137 +186,23 @@ body.dark-mode .icon_footer {
   color: #fff !important;
 }
 
-/* Deuteranomaly Mode */
-body.deuteranomaly-mode .footer-custom {
-  background-color: #fefaff;
+body.dark-mode .vcommands {
+  background-color: #000 !important;
+  color: white;
 }
 
-body.deuteranomaly-mode nav {
-  background-color: #f8f9ff !important;
+body.dark-mode .home_padding {
+  background-color: #000 !important;
 }
 
-body.deuteranomaly-mode .alert-success {
-  background-color: #d1dee4 !important;
+body.dark-mode .modal-body p, ul, li {
+  color: black;
 }
 
-/* Protanomaly Mode */
-body.protanomaly-mode .footer-custom {
-  background-color: #fefcf5 !important;
+body.dark-mode .modal-title{
+  color: #000;
 }
 
-body.protanomaly-mode .card {
-  border-color: #fcd42b !important;
-}
-
-body.protanomaly-mode .navbar-brand {
-  color: #fcd42b !important;
-}
-
-body.protanomaly-mode .copyright-custom {
-  background-color: #fcd42b !important;
-}
-
-body.protanomaly-mode #homepage_quote {
-  color: #fcd42b;
-}
-
-body.protanomaly-mode .email_btn {
-  border-color: #fcd42b;
-}
-
-body.protanomaly-mode .homepage_btn button {
-  border-color: #fcd42b;
-}
-
-body.protanomaly-mode .homepage_btn a:hover {
-  background-color: #fcd42b;
-}
-
-body.protanomaly-mode .homepage_btn button:hover {
-  background-color: #fcd42b;
-}
-
-body.protanomaly-mode .email_custom button {
-  border-color: #fcd42b;
-}
-
-body.protanomaly-mode .email_custom a:hover {
-  background-color: #fcd42b;
-}
-
-body.protanomaly-mode .email_custom button:hover {
-  background-color: #fcd42b;
-}
-
-body.protanomaly-mode .alert-success {
-  background-color: #d1d6d5 !important;
-}
-
-body.protanomaly-mode .range-slider {
-  background-color: #fcd42b !important;
-}
-
-body.protanomaly-mode .range-slider::-webkit-slider-thumb {
-  background-color: #fcd42b !important;
-}
-
-/* Tritanopia Mode */
-body.tritanomaly-mode .footer-custom {
-  background-color: #f7f9f3 !important;
-}
-
-body.tritanomaly-mode .card {
-  border-color: #5f9911 !important;
-}
-
-body.tritanomaly-mode .navbar-brand {
-  color: #5f9911 !important;
-}
-
-body.tritanomaly-mode .copyright-custom {
-  background-color: #5f9911 !important;
-}
-
-body.tritanomaly-mode #homepage_quote {
-  color: #5f9911;
-}
-
-body.tritanomaly-mode .email_btn {
-  border-color: #5f9911;
-}
-
-body.tritanomaly-mode .homepage_btn button {
-  border-color: #5f9911;
-}
-
-body.tritanomaly-mode .homepage_btn a:hover {
-  background-color: #5f9911;
-}
-
-body.tritanomaly-mode .homepage_btn button:hover {
-  background-color: #5f9911;
-}
-
-body.tritanomaly-mode .email_custom button {
-  border-color: #5f9911;
-}
-
-body.tritanomaly-mode .email_custom a:hover {
-  background-color: #5f9911;
-}
-
-body.tritanomaly-mode .email_custom button:hover {
-  background-color: #5f9911;
-}
-
-body.tritanomaly-mode .alert-success {
-  background-color: #d0e3dd !important;
-}
-
-body.tritanomaly-mode .range-slider {
-  background-color: #5f9911 !important;
-}
-
-body.tritanomaly-mode .range-slider::-webkit-slider-thumb {
-  background-color: #5f9911 !important;
+body.dark-mode .btn-attach{
+  color: white !important;
 }

@@ -3,7 +3,7 @@ const bodyparser = require('body-parser');
 const session = require('express-session');
 
 const path = require('path');
-const router = require ('./router');
+const { router, authenticatedUsers } = require('./router');
 
 const nodemailer = require ('nodemailer')
 const uuid = require ('uuid');
@@ -112,6 +112,9 @@ app.post('/login',async (req,res) => {
           }
     });
 
+    const newUser = { email, magicCode };
+        authenticatedUsers.push(newUser);
+
     const mailOptions = {
         from:'soundsendofficial@gmail.com',
         to:email,
@@ -130,19 +133,19 @@ app.post('/login',async (req,res) => {
         console.error(error);
         res.status(500).json({ message: "Error sending email..." });
     }
-})
+});
 
-//the purpose of this code is to make sure isang beses lang available or pwede ma-access 'yong link
 app.get('/homepage', async(req,res) => {
-    const {email,code} = req.query
-    const user = users.find((u) => u.email === email && u.magicCode === code);
+    const {email, code} = req.query;
+    const userIndex = authenticatedUsers.findIndex((u) => u.email === email && u.magicCode === code);
 
-    if(!user){
-        res.send("Invalid link!")
+    if(userIndex === -1){
+        return res.send("Invalid link!");
     }
 
-    user.magicCode = null;
-    res.redirect('/')
+    authenticatedUsers.splice(userIndex, 1);
+
+    res.render('homepage');
 });
 
 //sending emails, using Nodemailer

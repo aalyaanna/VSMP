@@ -9,7 +9,7 @@ const isAuthenticated = (req, res, next) => {
     const userIndex = authenticatedUsers.findIndex((u) => u.email === email && u.magicCode === code);
 
     if (userIndex !== -1) {
-        authenticatedUsers.splice(userIndex, 1);
+        req.isAuthenticated = true;
         next();
     } else {
         return res.send("Invalid link!");
@@ -17,7 +17,11 @@ const isAuthenticated = (req, res, next) => {
 };
 
 router.get('/homepage', isAuthenticated, (req, res) => {
-    res.render('homepage');
+    if (req.isAuthenticated) {
+        res.render('homepage');
+    } else {
+        res.send("Invalid link!");
+    }
 });
 
 router.get('/welcomepage', (req, res) => {
@@ -25,7 +29,11 @@ router.get('/welcomepage', (req, res) => {
 });
 
 router.get('/email', isAuthenticated, (req, res) => {
-    res.render('email');
+    if (req.isAuthenticated) {
+        res.render('email');
+    } else {
+        res.send("Invalid link!");
+    }
 });
 
 module.exports = {

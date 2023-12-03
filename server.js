@@ -43,7 +43,7 @@ const transport = nodemailer.createTransport({
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user:'soundsend@gmail.com',
+        user:'soundsendofficial@gmail.com',
         pass:'cqhhguzvcslpdeop'
     }
 })

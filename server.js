@@ -149,7 +149,7 @@ app.post('/login', async (req, res) => {
             html: `
                 <p>Magic Code: ${magicCode}</p>
                 <p>Click link below to access EyeDaptify Official Web Page.<p>
-                <a href="http://localhost:3000/homepage?email=${encodeURIComponent(
+                <a href="https://eyedaptify.onrender.com/homepage?email=${encodeURIComponent(
                     email
                 )}&code=${encodeURIComponent(magicCode)}">EyeDaptify Official</a>
             `,

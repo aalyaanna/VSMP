@@ -174,13 +174,13 @@ app.get('/homepage', isAuthenticated, (req, res) => {
     }
 });
 
-// app.get('/email', isAuthenticated, (req, res) => {
-//     if (req.isAuthenticated) {
-//         res.render('email');
-//     } else {
-//         res.send("Invalid link!");
-//     }
-// });
+app.get('/email', isAuthenticated, (req, res) => {
+     if (req.isAuthenticated) {
+         res.render('email');
+     } else {
+         res.send("Invalid link!");
+     }
+ });
 
 //sending emails, using Nodemailer
 app.post('/send-email', async (req, res) => {

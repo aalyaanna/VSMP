@@ -50,7 +50,7 @@ const transport = nodemailer.createTransport({
     auth:{
         type:'OAuth2',
         user: 'soundsendofficial@gmail.com',
-        accessToken: ''
+        accessToken: 'ya29.a0AfB_byDN4wU6b2K34eNqrb02mjCWYi1Js-g242GIQ3qF_5I9wa_sWwGkG4ak0jxhhYjEl3S2uy-s434Zzq5nSMqYztJ9kELRj1uHSW-QqCG2ab0sbuMlul5XNTq21cv3LqgXAZJUxe5VCaT6A1gIpY7PQC5hZMFfZTuyaCgYKAbASARISFQHGX2MiA-ZYVDAiK0gPzAmur0mNlw0171'
     }
 })
 

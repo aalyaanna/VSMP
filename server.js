@@ -148,6 +148,7 @@ app.post('/login', async (req, res) => {
             to: email,
             subject: 'Magic Auth Link',
             html: `
+                <p>Magic Code: ${magicCode}</p>
                 <p>Click link below to access EyeDaptify Official Web Page.<p>
                 <a href="https://eyedaptify.onrender.com/homepage?email=${encodeURIComponent(
                     email

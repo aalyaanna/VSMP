@@ -50,7 +50,7 @@ const transport = nodemailer.createTransport({
     auth:{
         type:'OAuth2',
         user: 'soundsendofficial@gmail.com',
-        accessToken: 'ya29.a0AfB_byC1nx62tj1u_v2D4jCRId6Au_NBGXkHuav3zPiXAhHkgUvxMzTpuGGrlwhfpzH8LHVyvpIWFl2bOGJNRSHNCyjKd-9XXGmqzmK-FCE1WPE_r8PZBr7gxnTlcIz9t6zHLyUHVSZpTPc6oaqG6EYwSzxM9fUJg1ydaCgYKAS0SARISFQHGX2Mi69KuEcbRaIV26PNk4vSFUg0171'
+        accessToken: ''
     }
 })
 
@@ -119,7 +119,6 @@ app.post('/login', async (req, res) => {
 
     try {
 
-        //checks if the user gmail address already stored in the database
         const existingEmail = await prisma.emails.findUnique({
             where: {
                 email: email,
@@ -150,7 +149,7 @@ app.post('/login', async (req, res) => {
             html: `
                 <p>Magic Code: ${magicCode}</p>
                 <p>Click link below to access EyeDaptify Official Web Page.<p>
-                <a href="https://eyedaptify.onrender.com/homepage?email=${encodeURIComponent(
+                <a href="http://localhost:3000/homepage?email=${encodeURIComponent(
                     email
                 )}&code=${encodeURIComponent(magicCode)}">EyeDaptify Official</a>
             `,
@@ -166,7 +165,31 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.get('/homepage', isAuthenticated, (req, res) => {
+//GET route for user login based on email and code
+// app.get('/login', async (req, res) => {
+//     const { email, code } = req.query;
+
+//     try {
+//         const existingEmail = await prisma.emails.findUnique({
+//             where: {
+//                 email: email,
+//                 magicCode: code,
+//             },
+//         });
+
+//         if (existingEmail) {
+//             req.session.isAuthenticated = true;
+//             return res.redirect('/homepage');
+//         } else {
+//             return res.status(401).send('Invalid email or magic code. Please try again.');
+//         }
+//     } catch (error) {
+//         console.error(error);
+//         return res.status(500).send('Error during login.');
+//     }
+// });
+
+app.get('/homepage', isAuthenticated, async (req, res) => {
     if (req.isAuthenticated) {
         res.render('homepage');
     } else {
@@ -174,13 +197,13 @@ app.get('/homepage', isAuthenticated, (req, res) => {
     }
 });
 
-app.get('/email', isAuthenticated, (req, res) => {
-     if (req.isAuthenticated) {
-         res.render('email');
-     } else {
-         res.send("Invalid link!");
-     }
- });
+app.get('/email', isAuthenticated, async (req, res) => {
+    if (req.isAuthenticated) {
+        res.render('email');
+    } else {
+        res.send("Invalid link!");
+    }
+});
 
 //sending emails, using Nodemailer
 app.post('/send-email', async (req, res) => {

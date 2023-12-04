@@ -1,13 +1,15 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const session = require('express-session');
+const { isAuthenticated, authenticatedUsers } = require('./authMiddleware');
 
 const path = require('path');
-const { router, authenticatedUsers } = require('./router');
+const { router } = require('./router');
 
 const nodemailer = require ('nodemailer')
 const uuid = require ('uuid');
 const multer = require('multer');
+const crypto = require('crypto');
 
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
@@ -16,6 +18,19 @@ const DATABASE_URL = process.env.DATABASE_URL;
 const app = express();
 
 const port = process.env.PORT || 3000;
+
+const generateSecretKey = () => {
+    return crypto.randomBytes(32).toString('hex');
+};
+  
+const secretKey = generateSecretKey();
+  console.log('Generated Secret Key:', secretKey);
+  
+app.use(session({
+    secret: secretKey,
+    resave: false,
+    saveUninitialized: true,
+}));
 
 //database connection
 async function connectToDatabase() {
@@ -35,7 +50,7 @@ const transport = nodemailer.createTransport({
     auth:{
         type:'OAuth2',
         user: 'soundsendofficial@gmail.com',
-        accessToken: 'ya29.a0AfB_byCg09DiubpXbZIC8-b3SXcE9y91-QvbE1aFLvAUmIbujYfZONo0vjyyvHz_63COwJiWuJJMJhGYq26WMth8nFT5KZVsn5N3Jl8D5TAhKnsQjip2T3C9yKhh30-pQ4aUSr1fC1DHn2zJd4iyD5UVFhKNSS2dUiNUaCgYKASYSARISFQHGX2Miu0wSszSgdHsG9KoGUgEqnA0171'
+        accessToken: 'ya29.a0AfB_byCKH8bH5FSVjelc91OBiuQBR7TVd-rG5sNTWlxxsF3C0GJqsAKv3nEHRPaxPhezzsXAzKpei6szGe96zzGQLe7yDf-5NJHBGPHDy1Xoe7edNpbnLfmfw5ocqzXQGSR4wPXgWuXmJ6QVdW6_cCDtcDgst7ZB3JORaCgYKAZgSARISFQHGX2Mivr6DBcwclYM18iVOEB9Dog0171'
     }
 })
 
@@ -99,33 +114,35 @@ app.post('/', (req, res) => {
 });
 
 //passwordless authentication link
-app.post('/login',async (req,res) => {
-    const {email} = req.body;
+app.post('/login', async (req, res) => {
+    const { email } = req.body;
 
     try {
         const magicCode = uuid.v4().substr(0, 8);
     
         await prisma.emails.create({
-          data: {
-            email,
-            magicCode,
-          }
-    });
+            data: {
+                email,
+                magicCode,
+            }
+        });
 
-    const newUser = { email, magicCode };
+        const newUser = { email, magicCode };
         authenticatedUsers.push(newUser);
 
-    const mailOptions = {
-        from:'soundsendofficial@gmail.com',
-        to:email,
-        subject:'Magic Auth Link',
-        html: `
-        <p>Click link below to access EyeDaptify Official Web Page.<p>
-        <a href="https://eyedaptify.onrender.com/homepage?email=${encodeURIComponent(
-            email
-        )}&code=${encodeURIComponent(magicCode)}">EyeDaptify Official</a>
-        `,
-    };
+        const mailOptions = {
+            from: 'soundsendofficial@gmail.com',
+            to: email,
+            subject: 'Magic Auth Link',
+            html: `
+                <p>Click link below to access EyeDaptify Official Web Page.<p>
+                <a href="http://localhost:3000/homepage?email=${encodeURIComponent(
+                    email
+                )}&code=${encodeURIComponent(magicCode)}">EyeDaptify Official</a>
+            `,
+        };
+
+        req.session.isAuthenticated = true;
 
         await transport.sendMail(mailOptions);
         res.status(200).json({ message: "Magic Auth Link has been sent to your Gmail." });
@@ -135,18 +152,21 @@ app.post('/login',async (req,res) => {
     }
 });
 
-app.get('/homepage', async(req,res) => {
-    const {email, code} = req.query;
-    const userIndex = authenticatedUsers.findIndex((u) => u.email === email && u.magicCode === code);
-
-    if(userIndex === -1){
-        return res.send("Invalid link!");
+app.get('/homepage', isAuthenticated, (req, res) => {
+    if (req.isAuthenticated) {
+        res.render('homepage');
+    } else {
+        res.send("Invalid link!");
     }
-
-    authenticatedUsers.splice(userIndex, 1);
-
-    res.render('homepage');
 });
+
+// app.get('/email', isAuthenticated, (req, res) => {
+//     if (req.isAuthenticated) {
+//         res.render('email');
+//     } else {
+//         res.send("Invalid link!");
+//     }
+// });
 
 //sending emails, using Nodemailer
 app.post('/send-email', async (req, res) => {

@@ -50,7 +50,7 @@ const transport = nodemailer.createTransport({
     auth:{
         type:'OAuth2',
         user: 'soundsendofficial@gmail.com',
-        accessToken: 'ya29.a0AfB_byCKH8bH5FSVjelc91OBiuQBR7TVd-rG5sNTWlxxsF3C0GJqsAKv3nEHRPaxPhezzsXAzKpei6szGe96zzGQLe7yDf-5NJHBGPHDy1Xoe7edNpbnLfmfw5ocqzXQGSR4wPXgWuXmJ6QVdW6_cCDtcDgst7ZB3JORaCgYKAZgSARISFQHGX2Mivr6DBcwclYM18iVOEB9Dog0171'
+        accessToken: 'ya29.a0AfB_byC1nx62tj1u_v2D4jCRId6Au_NBGXkHuav3zPiXAhHkgUvxMzTpuGGrlwhfpzH8LHVyvpIWFl2bOGJNRSHNCyjKd-9XXGmqzmK-FCE1WPE_r8PZBr7gxnTlcIz9t6zHLyUHVSZpTPc6oaqG6EYwSzxM9fUJg1ydaCgYKAS0SARISFQHGX2Mi69KuEcbRaIV26PNk4vSFUg0171'
     }
 })
 
@@ -118,6 +118,19 @@ app.post('/login', async (req, res) => {
     const { email } = req.body;
 
     try {
+
+        //checks if the user gmail address already stored in the database
+        const existingEmail = await prisma.emails.findUnique({
+            where: {
+                email: email,
+            },
+        });
+
+        if (existingEmail) {
+            return res.status(200).json({ message: 'User already registered.' });
+        }
+
+        //stores the user's gmail address with a unique magic code in the database
         const magicCode = uuid.v4().substr(0, 8);
     
         await prisma.emails.create({
@@ -136,7 +149,7 @@ app.post('/login', async (req, res) => {
             subject: 'Magic Auth Link',
             html: `
                 <p>Click link below to access EyeDaptify Official Web Page.<p>
-                <a href="https://eyedaptify.onrender.com/homepage?email=${encodeURIComponent(
+                <a href="http://localhost:3000/homepage?email=${encodeURIComponent(
                     email
                 )}&code=${encodeURIComponent(magicCode)}">EyeDaptify Official</a>
             `,

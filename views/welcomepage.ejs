@@ -32,6 +32,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#gmailModal">gmail</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="openLoginModal">login</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -263,7 +266,6 @@
             </form>
         </section>
     
-    
         <!-- Modal for the gmail link authentication,,, dito po sha opo -->
         <div class="modal fade" id="gmailModal" tabindex="-1" aria-labelledby="gmailModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -287,6 +289,35 @@
                     <div class="modal-footer">
                         <button type="button" onclick="sendMagicLink()" class="btn btn-warning"
                             data-bs-dismiss="modal">Send</button>
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for the gmail link authentication,,, dito po sha opo -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="gmailModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="gmailModalLabel">Login Registered Account</h5>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Please palagyan ng explanation about dito T T-->
+                        <p>Please type your Gmail account registered to our website.</p>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Gmail Account</label>
+                            <input type="email" id="email" name="email" class="form-control"
+                                placeholder="example@gmail.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="magicCode" class="form-label">Magic Code</label>
+                            <input type="text" id="magicCode" name="magicCode" class="form-control" placeholder="Enter magic code">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="userLogin()" class="btn btn-warning"
+                            data-bs-dismiss="modal">Login</button>
                         <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -338,6 +369,7 @@
     
         <!-- Para ito sa pop-up modal kapag nagsscroll, one time lang to, kapag bagong bukas yung website -->
         <script>
+
             async function sendMagicLink() {
                 const email = document.getElementById('email').value;
                 const response = await fetch('/login', {
@@ -368,6 +400,33 @@
                     }
                 }
                 $(window).on('scroll', checkScroll);
+            });
+
+            async function userLogin() {
+                const email = document.getElementById('email').value;
+                const code = document.getElementById('magicCode').value;
+
+                if (email && code) {
+                const response = await fetch(`/login?email=${encodeURIComponent(email)}&code=${encodeURIComponent(code)}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    window.location.href = '/homepage';
+                } else {
+                    console.error('Login failed:', result.message);
+                    }
+                }
+            }   
+        
+            window.addEventListener('load', userLogin);
+
+            document.getElementById('openLoginModal').addEventListener('click', function() {
+                $('#loginModal').modal('show');
             });
     
             //function for sending queries 
@@ -422,7 +481,7 @@
                     modal.style.display = 'none';
                 }
             });
-
+    
         </script>
     </body>
     

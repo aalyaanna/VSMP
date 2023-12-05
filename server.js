@@ -1,35 +1,50 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const session = require('express-session');
+const { isAuthenticated, authenticatedUsers } = require('./authMiddleware');
 
 const path = require('path');
-const router = require ('./router');
+const { router } = require('./router');
 
 const nodemailer = require ('nodemailer')
 const uuid = require ('uuid');
 const multer = require('multer');
+const crypto = require('crypto');
 
-// const {
-//     PrismaClient
-// } = require('@prisma/client');
-// const prisma = new PrismaClient();
-// const DATABASE_URL = process.env.DATABASE_URL;
+const {
+    PrismaClient
+} = require('@prisma/client');
+const prisma = new PrismaClient();
+const DATABASE_URL = process.env.DATABASE_URL;
 
 const app = express();
 
 const port = process.env.PORT || 3000;
 
-//database connection
-// async function connectToDatabase() {
-//     try {
-//         await prisma.$connect();
-//         console.log('Connected to the database');
-//     } catch (error) {
-//         console.error('Error connecting to the database:', error);
-//     }
-// }
+const generateSecretKey = () => {
+    return crypto.randomBytes(32).toString('hex');
+};
+  
+const secretKey = generateSecretKey();
+  console.log('Generated Secret Key:', secretKey);
+  
+app.use(session({
+    secret: secretKey,
+    resave: false,
+    saveUninitialized: true,
+}));
 
-// connectToDatabase();
+//database connection
+async function connectToDatabase() {
+    try {
+        await prisma.$connect();
+        console.log('Connected to the database');
+    } catch (error) {
+        console.error('Error connecting to the database:', error);
+    }
+}
+
+connectToDatabase();
 
 //transporter for gmail authentication link
 const transport = nodemailer.createTransport({
@@ -37,7 +52,7 @@ const transport = nodemailer.createTransport({
     auth:{
         type:'OAuth2',
         user: 'soundsendofficial@gmail.com',
-        accessToken: 'ya29.a0AfB_byCheS5EUZyQMIIOy-X8OUbr6oqXWOh7GG3pmIr1U3WTn9OSpSUMVrrOq73PCe63AQCZnfcRWiioA4YeoiegZQ9O_lwFuPQ6NpCKBTr9G9b4-aeDKZnxKXnWZaGXOKaJEeVCBezAaP_AIi_weciovgJ4h7HUxsGQaCgYKAWcSARISFQHGX2MiM6PGOxfZoTfBoXfSioo34A0171'
+        accessToken: 'ya29.a0AfB_byDN4wU6b2K34eNqrb02mjCWYi1Js-g242GIQ3qF_5I9wa_sWwGkG4ak0jxhhYjEl3S2uy-s434Zzq5nSMqYztJ9kELRj1uHSW-QqCG2ab0sbuMlul5XNTq21cv3LqgXAZJUxe5VCaT6A1gIpY7PQC5hZMFfZTuyaCgYKAbASARISFQHGX2MiA-ZYVDAiK0gPzAmur0mNlw0171'
     }
 })
 
@@ -103,18 +118,30 @@ app.post('/', (req, res) => {
 });
 
 //passwordless authentication link
-app.post('/login',async (req,res) => {
-    const {email} = req.body;
+app.post('/login', async (req, res) => {
+    const { email } = req.body;
 
     try {
+
+        const existingEmail = await prisma.emails.findUnique({
+            where: {
+                email: email,
+            },
+        });
+
+        if (existingEmail) {
+            return res.status(200).json({ message: 'User already registered.' });
+        }
+
+        //stores the user's gmail address with a unique magic code in the database
         const magicCode = uuid.v4().substr(0, 8);
     
         await prisma.emails.create({
-          data: {
-            email,
-            magicCode,
-          }
-    });
+            data: {
+                email,
+                magicCode,
+            }
+        });
 
         const mailOptions = {
             from: 'soundsendofficial@gmail.com',
@@ -134,19 +161,46 @@ app.post('/login',async (req,res) => {
         console.error(error);
         res.status(500).json({ message: "Error sending email..." });
     }
-})
+});
 
-//the purpose of this code is to make sure isang beses lang available or pwede ma-access 'yong link
-app.get('/homepage', async(req,res) => {
-    const {email,code} = req.query
-    const user = users.find((u) => u.email === email && u.magicCode === code);
+//GET route for user login based on email and code
+// app.get('/login', async (req, res) => {
+//     const { email, code } = req.query;
 
-    if(!user){
-        res.send("Invalid link!")
+//     try {
+//         const existingEmail = await prisma.emails.findUnique({
+//             where: {
+//                 email: email,
+//                 magicCode: code,
+//             },
+//         });
+
+//         if (existingEmail) {
+//             req.session.isAuthenticated = true;
+//             return res.redirect('/homepage');
+//         } else {
+//             return res.status(401).send('Invalid email or magic code. Please try again.');
+//         }
+//     } catch (error) {
+//         console.error(error);
+//         return res.status(500).send('Error during login.');
+//     }
+// });
+
+app.get('/homepage', isAuthenticated, async (req, res) => {
+    if (req.isAuthenticated) {
+        res.render('homepage');
+    } else {
+        res.send("Invalid link!");
     }
+});
 
-    user.magicCode = null;
-    res.redirect('/')
+app.get('/email', isAuthenticated, async (req, res) => {
+    if (req.isAuthenticated) {
+        res.render('email');
+    } else {
+        res.send("Invalid link!");
+    }
 });
 
 //sending emails, using Nodemailer

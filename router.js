@@ -1,10 +1,17 @@
 const express = require("express");
 const router = express.Router();
+const { isAuthenticated } = require('./authMiddleware');
 
-//routes for homepage, welcomepage and email
+const renderInvalidLink = (res) => {
+    res.send("Invalid link!");
+};
 
-router.get('/homepage', (req, res) => {
-    res.render('homepage');
+router.get('/homepage', isAuthenticated, (req, res) => {
+    if (req.isAuthenticated) {
+        res.render('homepage');
+    } else {
+        renderInvalidLink(res);
+    }
 });
 
 router.get('/welcomepage', (req, res) => {
@@ -15,4 +22,14 @@ router.get('/email', (req, res) => {
     res.render('email');
 });
 
-module.exports = router;
+// router.get('/email', isAuthenticated, (req, res) => {
+//     if (req.isAuthenticated) {
+//         res.render('email');
+//     } else {
+//         renderInvalidLink(res);
+//     }
+// });
+
+module.exports = {
+    router,
+};

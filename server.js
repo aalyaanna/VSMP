@@ -3,10 +3,10 @@ const bodyparser = require('body-parser');
 const session = require('express-session');
 
 const path = require('path');
-const router = require('./router');
+const router = require ('./router');
 
-const nodemailer = require('nodemailer')
-const uuid = require('uuid');
+const nodemailer = require ('nodemailer')
+const uuid = require ('uuid');
 const multer = require('multer');
 
 const {
@@ -33,9 +33,9 @@ connectToDatabase();
 
 //transporter for gmail authentication link
 const transport = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        type: 'OAuth2',
+    service:'gmail',
+    auth:{
+        type:'OAuth2',
         user: 'soundsendofficial@gmail.com',
         accessToken: 'ya29.a0AfB_byCheS5EUZyQMIIOy-X8OUbr6oqXWOh7GG3pmIr1U3WTn9OSpSUMVrrOq73PCe63AQCZnfcRWiioA4YeoiegZQ9O_lwFuPQ6NpCKBTr9G9b4-aeDKZnxKXnWZaGXOKaJEeVCBezAaP_AIi_weciovgJ4h7HUxsGQaCgYKAWcSARISFQHGX2MiM6PGOxfZoTfBoXfSioo34A0171'
     }
@@ -52,22 +52,20 @@ const transporter = nodemailer.createTransport({
 
 //declare the file path and root directory folder for attaching files
 const Storage = multer.diskStorage({
-    destination: function (req, file, callback) {
-        callback(null, './uploads');
+    destination:function(req,file,callback){
+        callback(null,'./uploads');
     },
-    filename: function (req, file, callback) {
-        callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+    filename:function(req,file,callback){
+        callback(null,file.fieldname + "_" + Date.now() + "_" + file.originalname);
     }
 })
 
 const upload = multer({
-    storage: Storage
+    storage:Storage
 }).single('attachment');
 
 app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({
-    extended: true
-}))
+app.use(bodyparser.urlencoded({ extended: true }))
 
 app.set('view engine', 'ejs');
 
@@ -105,20 +103,18 @@ app.post('/', (req, res) => {
 });
 
 //passwordless authentication link
-app.post('/login', async (req, res) => {
-    const {
-        email
-    } = req.body;
+app.post('/login',async (req,res) => {
+    const {email} = req.body;
 
     try {
         const magicCode = uuid.v4().substr(0, 8);
-
+    
         await prisma.emails.create({
-            data: {
-                email,
-                magicCode,
-            }
-        });
+          data: {
+            email,
+            magicCode,
+          }
+    });
 
         const mailOptions = {
             from: 'soundsendofficial@gmail.com',
@@ -130,29 +126,22 @@ app.post('/login', async (req, res) => {
             email
         )}&code=${encodeURIComponent(magicCode)}">EyeDaptify Official</a>
         `,
-        };
+    };
 
         await transport.sendMail(mailOptions);
-        res.status(200).json({
-            message: "Magic Auth Link has been sent to your Gmail."
-        });
+        res.status(200).json({ message: "Magic Auth Link has been sent to your Gmail." });
     } catch (error) {
         console.error(error);
-        res.status(500).json({
-            message: "Error sending email..."
-        });
+        res.status(500).json({ message: "Error sending email..." });
     }
 })
 
 //the purpose of this code is to make sure isang beses lang available or pwede ma-access 'yong link
-app.get('/homepage', async (req, res) => {
-    const {
-        email,
-        code
-    } = req.query
+app.get('/homepage', async(req,res) => {
+    const {email,code} = req.query
     const user = users.find((u) => u.email === email && u.magicCode === code);
 
-    if (!user) {
+    if(!user){
         res.send("Invalid link!")
     }
 
@@ -163,30 +152,25 @@ app.get('/homepage', async (req, res) => {
 //sending emails, using Nodemailer
 app.post('/send-email', async (req, res) => {
 
-    upload(req, res, async function (err) {
-        if (err) {
+    upload(req,res,async function(err){
+        if(err){
             console.log(err);
             return res.end("Something went wrong!");
         }
 
-        const attachment = req.file ? [{
-            path: req.file.path
-        }] : [];
+    const attachment = req.file ? [{
+        path: req.file.path
+    }] : [];
 
-        const {
-            userEmailAddress,
-            recipientEmailAddress,
-            subjectEmail,
-            bodyEmail
-        } = req.body;
+    const { userEmailAddress, recipientEmailAddress, subjectEmail, bodyEmail } = req.body;
 
-        const mailOptions = {
-            from: userEmailAddress,
-            to: recipientEmailAddress,
-            subject: subjectEmail,
-            text: bodyEmail,
-            attachments: attachment,
-        };
+    const mailOptions = {
+        from: userEmailAddress,
+        to: recipientEmailAddress,
+        subject: subjectEmail,
+        text: bodyEmail,
+        attachments: attachment,
+    };
 
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
@@ -211,6 +195,4 @@ app.post('/send-email', async (req, res) => {
     })
 })
 
-app.listen(port, () => {
-    console.log("Listening to the server on http://localhost:3000")
-});
+app.listen(port, ()=>{ console.log("Listening to the server on http://localhost:3000")});

@@ -9,27 +9,27 @@ const nodemailer = require ('nodemailer')
 const uuid = require ('uuid');
 const multer = require('multer');
 
-const {
-    PrismaClient
-} = require('@prisma/client');
-const prisma = new PrismaClient();
-const DATABASE_URL = process.env.DATABASE_URL;
+// const {
+//     PrismaClient
+// } = require('@prisma/client');
+// const prisma = new PrismaClient();
+// const DATABASE_URL = process.env.DATABASE_URL;
 
 const app = express();
 
 const port = process.env.PORT || 3000;
 
 //database connection
-async function connectToDatabase() {
-    try {
-        await prisma.$connect();
-        console.log('Connected to the database');
-    } catch (error) {
-        console.error('Error connecting to the database:', error);
-    }
-}
+// async function connectToDatabase() {
+//     try {
+//         await prisma.$connect();
+//         console.log('Connected to the database');
+//     } catch (error) {
+//         console.error('Error connecting to the database:', error);
+//     }
+// }
 
-connectToDatabase();
+// connectToDatabase();
 
 //transporter for gmail authentication link
 const transport = nodemailer.createTransport({

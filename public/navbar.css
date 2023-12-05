@@ -195,14 +195,16 @@ body.dark-mode .home_padding {
   background-color: #000 !important;
 }
 
-body.dark-mode .modal-body p, ul, li {
+body.dark-mode .modal-body p,
+ul,
+li {
   color: black;
 }
 
-body.dark-mode .modal-title{
+body.dark-mode .modal-title {
   color: #000;
 }
 
-body.dark-mode .btn-attach{
+body.dark-mode .btn-attach {
   color: white !important;
 }

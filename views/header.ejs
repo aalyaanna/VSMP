@@ -8,6 +8,7 @@
     <link rel="icon" href="https://i.ibb.co/ngCzvvS/eyedaptify.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="manifest" href="/manifest.json">
     <title>EyeDaptify</title>
 
     <!--Links for CCS, Bootstraps and JS-->
@@ -32,5 +33,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
 
 </head>
+
+<body>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/service_worker.js').then(function (registration) {
+                    console.log(registration.scope)
+                }, function (err) {
+                    console.log(err)
+                })
+            })
+        }
+    </script>
+</body>
 
 </html>

@@ -6,13 +6,13 @@ const renderInvalidLink = (res) => {
     res.send("Invalid link!");
 };
 
-// router.get('/homepage', isAuthenticated, (req, res) => {
-//     if (req.isAuthenticated) {
-//         res.render('homepage');
-//     } else {
-//         renderInvalidLink(res);
-//     }
-// });
+router.get('/homepage', isAuthenticated, (req, res) => {
+    if (req.isAuthenticated) {
+        res.render('homepage');
+    } else {
+        renderInvalidLink(res);
+    }
+});
 
 // router.get('/email', isAuthenticated, (req, res) => {
 //     if (req.isAuthenticated) {
@@ -30,9 +30,9 @@ router.get('/email', (req, res) => {
     res.render('email');
 });
 
-router.get('/homepage', (req, res) => {
-    res.render('homepage');
-});
+// router.get('/homepage', (req, res) => {
+//     res.render('homepage');
+// });
 
 module.exports = {
     router,

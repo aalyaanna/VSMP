@@ -333,6 +333,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-warning" id="continueButton">Continue</button>
                     </div>
                 </div>
             </div>
@@ -394,6 +395,11 @@
                     }
                 }
                 $(window).on('scroll', checkScroll);
+            });
+
+            //redirect user to homepage if account is already registered
+            document.getElementById('continueButton').addEventListener('click', function() {
+                window.location.href = '/homepage';
             });
     
             // async function userLogin() {

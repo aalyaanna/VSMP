@@ -343,17 +343,6 @@
                             notificationElement.textContent = 'An error occurred while sending the email.';
                         }
                     });
-
-                    document.getElementById('startSpeechRecognition').addEventListener('click', function () {
-                    if ('speechSynthesis' in window) {
-                    const message = new SpeechSynthesisUtterance('Speech recognition has been activated successfully.');
-        
-                        window.speechSynthesis.speak(message);
-        
-                    } else {
-                        console.log('Speech synthesis not supported.');
-                        }
-                    });
         
                     //speech to text recognition function, using javascript only
                     function capitalizeFirstLetter(transcript) {

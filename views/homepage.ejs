@@ -76,17 +76,19 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-12 col-12">
                         <div class="objectives-text">
-                            <h2 class="font-changer">Objectives of EyeDaptify</h2>
-                            <p class="font-changer">At EyeDaptify, our capstone project is dedicated to revolutionizing
-                                email accessibility for visually impaired employees. Leveraging cutting-edge Natural
-                                Language Processing (NLP) technology, we aim to empower these individuals in their
-                                email-related tasks. Our specific objectives include:</p>
-                            <ul class="font-changer">
-                                <li>Developing a web application tailored to assist visually impaired employees with email
-                                    tasks.</li>
-                                <li>Integrating bilingual speech-to-text functionality for seamless communication.</li>
-                                <li>Offering customizable screen display options to cater to individual preferences.</li>
-                            </ul>
+                            <h2 class="font-changer">Objective of EyeDaptify</h2>
+                            <p class="font-changer">At EyeDaptify, our capstone project aims to develop an assistive website
+                                application employing NLP-driven technology to amend the work performance of visually
+                                impaired employees in the task of sending emails.
+                            </p>
+    
+                            <h2 class="font-changer">SoundSend Extension</h2>
+                            <p class="font-changer">This powerful tool offers a range of features designed to make web
+                                content more accessible and comfortable for all users.<br>
+                                Go to <a type="button" href="https://github.com/aalyaanna/SS-extension">SoundSend
+                                    Extension</a> to download our
+                                extension.
+                            </p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-12">
@@ -161,8 +163,8 @@
                     <a type="button" class="btn mx-5 font-changer email_btn" href="/email">Compose <br> Email</a>
                     <button type="button" id="showVCModal" class="btn mx-5 font-changer">Activate Voice <br>
                         Command</button>
-                    <button type="button" id="showSettingModal" class="btn mx-5 font-changer">Command <br>
-                        Setting</button>
+                    <!-- <button type="button" id="showSettingModal" class="btn mx-5 font-changer">Command <br>
+                        Setting</button> -->
                 </div>
             </div>
         </section>
@@ -245,7 +247,7 @@
         </div>
     
         <!-- modal for voice command setting using database -->
-        <div class="modal fade" id="vcSettingModal" tabindex="-1" aria-labelledby="gmailModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="vcSettingModal" tabindex="-1" aria-labelledby="gmailModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-content">
@@ -266,11 +268,9 @@
                         <button id="cancelCommand">Cancel</button>
                     </form>
                 </div>
-                <!-- Display Commands -->
                 <div id="commandsList">
                     <h2>Command Settings</h2>
                     <table id="commandsTable">
-                        <!-- Table headers -->
                         <thead>
                             <tr>
                                 <th>Command</th>
@@ -278,9 +278,7 @@
                                 <th>Edit/Delete</th>
                             </tr>
                         </thead>
-                        <!-- Table body to display commands -->
                         <tbody id="commandsBody">
-                            <!-- Commands will be populated here -->
                         </tbody>
                     </table>
                     <button id="addCommand">Add Command</button>
@@ -292,7 +290,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     
             <!-- Modal sa contact us -->
             <div class="modal" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -319,15 +317,27 @@
     
             <!-- Magnifying glass, working na, WAG GAGALAWIN-->
             <script>
+                
                 document.getElementById('showVCModal').addEventListener('click', function () {
                     //display the voice command modal when the button is clicked
                     $('#commandModal').modal('show');
                 });
 
-                document.getElementById('showSettingModal').addEventListener('click', function () {
-                    //display the voice command modal when the button is clicked
-                    $('#vcSettingModal').modal('show');
+                document.getElementById('activateSpeechRecognition').addEventListener('click', function () {
+                    if ('speechSynthesis' in window) {
+                    const message = new SpeechSynthesisUtterance('Voice command has been activated successfully.');
+        
+                        window.speechSynthesis.speak(message);
+        
+                } else {
+                    console.log('Speech synthesis not supported.');
+                    }
                 });
+
+                // document.getElementById('showSettingModal').addEventListener('click', function () {
+                //     //display the voice command modal when the button is clicked
+                //     $('#vcSettingModal').modal('show');
+                // });
     
                 //function for magnifying glass
                 const SCALE = 1.3; //magnification
@@ -403,7 +413,7 @@
                     });
     
                     $("#reset-font-size").on("click", function () {
-                        const defaultFontSize = "16px";
+                        const defaultFontSize = "20px";
                         $(".font-changer").css("font-size", defaultFontSize);
                         $("#range-slider").val(16);
                         $(".value").text(defaultFontSize);
